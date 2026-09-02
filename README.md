@@ -1,15 +1,18 @@
 # Alloy
 
 A React design system built from scratch, tuned for creative-portfolio work.
-**Material 3 semantics** — color roles, state layers, elevation, motion — on an
-**Orange / warm Grey / Deep Red** palette:
+**Material 3 semantics** — color roles, state layers, elevation, motion — with
+**hot accents on a neutral grey field**:
 
-- **Orange** (`primary`) does the accent work — buttons, links, active states, focus rings.
-- **Deep red** (`secondary`) is reserved and grounded — "serious" secondary CTAs, emphasis
-  text, tags. Never mid-tone bright; never next to primary at equal saturation.
-- **True red** (`error`) is a deliberately different hue/saturation than the deep red, so
-  validation and destructive actions read as *breaking* the pattern, not part of it.
-- **Warm grey + white** (`neutral`) carries the scannability.
+- **Orange** (`primary`, `#FF540D`) leads — buttons, links, active states, focus rings,
+  the first stop of every gradient. `primary/40` for text (AA); the brand hue for chrome.
+- **Pink** (`secondary`, `#E80C7A`) is a full peer accent — alternate CTAs, highlights,
+  the pink end of the gradient.
+- **Pure red** (`error`, `#FF0000`) is the one hot hue kept *out* of the decorative
+  palette, so validation and destructive actions read as breaking the pattern.
+- **True grey + white** (`neutral`) carries all the structure.
+- **Gradients** (`--alloy-gradient-*`) — orange↔pink, for depth on hero / brand
+  surfaces. Depth is a gradient job now, not a tinted-shadow job.
 
 Generous rounding, brisk motion. Structured like a standard system.
 
@@ -61,26 +64,40 @@ are inline SVG so components render even without the icon font loaded.
 
 | Concern       | From Material 3                              | How Alloy tunes it                            |
 | ------------- | ------------------------------------------- | --------------------------------------------- |
-| Color         | Semantic role tokens, tonal palettes, light/dark | Orange `primary`, deep-red `secondary` (reserved/grounded), true-red `error` (distinct hue from secondary), warm grey neutrals. No third brand hue. `success`/`warning` are functional-only |
-| Surface       | Surface-container levels, elevation tint     | Flat warm-grey container ramp — the greys carry scanning; no primary tint |
+| Color         | Semantic role tokens, tonal palettes, light/dark | Orange `primary` + Pink `secondary` as **peer** accents; pure-red `error` reserved (never decorative); true-grey neutrals. `success`/`warning` functional-only |
+| Depth         | Surface tint / elevation tint               | **Gradient tokens** — orange↔pink — do the brand depth; the container ramp and shadows stay pure neutral grey |
 | Shape         | Shape scale (none → full)                   | Generous: `sm` 6 · `md` 10 · `lg` 14 · `xl` 20. Buttons round to `lg`, chips are full pills |
-| Elevation     | 6 levels, shadow model                      | Soft, warm, low-alpha shadows; cards default to level 1 |
-| Typography    | display / headline / title / body / label roles | One family (Inter); comfortable body leading (14/22, 16/26) for scannability; bold display & headline |
-| Interaction   | State-layer overlays (hover .08 / focus .10 / press .10) | Kept — but the layer sits **behind** content (z-index 0) so hover/press tint never lowers foreground contrast. Interactive cards also get a perceptible 1.5px ring, not shadow alone |
+| Elevation     | 6 levels, shadow model                      | Clean neutral-grey shadows, 5 levels; cards default to level 1 |
+| Typography    | display / headline / title / body / label roles | One family (Inter); comfortable body leading (14/22, 16/26); bold display & headline |
+| Interaction   | State-layer overlays (hover .08 / focus .10 / press .10) | Kept — layer sits **behind** content (z-index 0) so hover/press tint never lowers contrast. Interactive cards get a perceptible 1.5px ring, not shadow alone |
 | Motion        | Standard / emphasized easing curves         | Brisk durations (80–340ms); springy `emphasized` easing |
 | Spacing       | —                                          | 4px grid (2 4 8 12 16 20 24 32 40 48 64 80) |
 
+### Gradients
+
+```
+--alloy-gradient-warm          orange → pink   (--alloy-sys-gradient)
+--alloy-gradient-warm-reverse  pink → orange   (--alloy-sys-gradient-reverse)
+--alloy-gradient-warm-soft     lighter, calmer
+--alloy-gradient-warm-vivid    orange · red · pink
+--alloy-gradient-depth         ambient two-corner wash for large backgrounds
+```
+
+Utilities: `.alloy-gradient`, `.alloy-gradient--reverse/-soft/-vivid/-depth`,
+`.alloy-gradient-text` (clips to glyphs). `<Button variant="gradient">` is the
+highest-emphasis button.
+
 ### Accessibility notes on the current palette
 
-- **`--alloy-sys-primary` (light) is `primary-40` (#C24A0E)** — white text is **4.91:1**,
-  passes WCAG AA. `primary-50` (#E5651B, 3.38:1) stays in the ramp for large-text /
-  chrome accents only. Dark mode uses `primary-70` (6.1:1).
-- **Dark-mode `--alloy-sys-secondary` is `secondary-60`** (kept deliberately grounded).
-  Solid deep-red elements in dark mode land at ~2.9:1 with their on-color — fine for
-  the intended uses (emphasis text sitting on a surface, tags, borders) but not for
-  filled deep-red buttons in dark mode. Bump to `secondary-70` there if you need it.
-- Everything else (neutrals, error, outline, success) passes AA / non-text minimums
-  in both themes.
+- **`--alloy-sys-primary` (light) is `primary/40` (#B74107)** — white text **5.6:1**, AA ✓.
+  The brand orange `#FF540D` (3.2:1 on white) is `primary-bright`, for large-text / chrome only.
+- **`--alloy-sys-secondary` (light) is `secondary/40` (#B80063)** — white text **6.5:1**, AA ✓.
+  Brand pink `#E80C7A` is `secondary-bright`.
+- **Gradient buttons** carry white on a `#FF540D → #E80C7A` field (3.2–4.4:1) — a
+  large-text / hero-CTA treatment, below AA for small labels. Use `filled` when the
+  label is small.
+- Everything else — neutrals, `error`, `link`, `outline`, all filled buttons in both
+  themes — passes AA (text) or ≥3:1 (non-text).
 
 ---
 

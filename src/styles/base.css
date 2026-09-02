@@ -45,6 +45,20 @@
   transition: opacity var(--alloy-duration-2) var(--alloy-ease-standard);
 }
 
+/* Brand gradient utilities — orange ↔ pink, for depth on hero / brand surfaces.
+   `--text` variants clip the gradient to the glyphs. */
+.alloy-gradient { background-image: var(--alloy-gradient-warm); color: var(--alloy-sys-on-gradient); }
+.alloy-gradient--reverse { background-image: var(--alloy-gradient-warm-reverse); }
+.alloy-gradient--soft { background-image: var(--alloy-gradient-warm-soft); }
+.alloy-gradient--vivid { background-image: var(--alloy-gradient-warm-vivid); }
+.alloy-gradient--depth { background-image: var(--alloy-gradient-depth); }
+.alloy-gradient-text {
+  background-image: var(--alloy-gradient-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Typography utilities */
 .alloy-display-lg { font: var(--alloy-type-display-lg); letter-spacing: var(--alloy-tracking-tight); }
 .alloy-display-md { font: var(--alloy-type-display-md); letter-spacing: var(--alloy-tracking-tight); }

@@ -42,6 +42,15 @@
   --_state: var(--alloy-sys-on-primary);
 }
 
+/* Gradient — orange → pink. Highest-emphasis, hero moments. Uses the bright
+   brand hues (contrast is carried by white text on a saturated field). */
+.alloy-btn--gradient {
+  background-image: var(--alloy-sys-gradient);
+  color: var(--alloy-sys-on-gradient);
+  --_state: #ffffff;
+}
+.alloy-btn--gradient:hover { background-image: var(--alloy-sys-gradient-reverse); }
+
 .alloy-btn--tonal {
   background-color: var(--alloy-sys-primary-container);
   color: var(--alloy-sys-on-primary-container);

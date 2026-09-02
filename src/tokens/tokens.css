@@ -1,116 +1,122 @@
 /**
  * Alloy — design tokens
  * ---------------------------------------------------------------------------
- * Palette:  Orange / warm Grey / Deep Red
- *   primary   → Orange   — structure + primary actions, does most accent work
- *   secondary → Deep Red — brick/oxblood, reserved & grounded (never mid-tone
- *               bright, never adjacent to primary at equal saturation)
- *   error     → true Red — a different hue/sat than secondary so validation and
- *               destructive actions never read as "on brand"
- *   neutral   → warm-leaning grey + white — carries the scannability
- *   success / warning → FUNCTIONAL status only, not brand accents
+ * Palette:  Hot accents on a neutral grey field
+ *   primary   → Orange  (#FF540D)  — the lead accent; buttons, links, focus
+ *   secondary → Pink     (#E80C7A) — a full peer accent; alt CTAs, highlights,
+ *               the second stop of every brand gradient
+ *   error     → pure Red (#FF0000) — the one hot hue kept OUT of the decorative
+ *               palette, so destructive / invalid states always break the pattern
+ *   neutral   → true grey + white — carries all the structure and scanning
+ *   gradients → orange↔pink, for depth on hero / elevated / brand surfaces
+ *   success / warning → FUNCTIONAL status only, never decorative
  *
  * Layer 1 (--alloy-ref-*)  reference palette  (raw tonal values, never used directly in components)
  * Layer 2 (--alloy-sys-*)  system roles       (what components consume; themable per mode)
- * Layer 3 (--alloy-*)      scales             (spacing, radius, type, motion — mode independent)
- *
- * Layer 3 is UNCHANGED across palette revisions — only the color layers move.
+ * Layer 3 (--alloy-*)      scales             (spacing, radius, type, motion, gradients)
  */
 
 :root {
   /* ---- Layer 1: reference tonal palettes ------------------------------- */
 
-  /* Orange (primary) */
+  /* Orange (primary) — brand hue is tone 50, #FF540D */
   --alloy-ref-primary-0: #000000;
-  --alloy-ref-primary-10: #3d1400;
-  --alloy-ref-primary-20: #5c1f00;
-  --alloy-ref-primary-30: #8a3a0a;
-  --alloy-ref-primary-40: #c24a0e;
-  --alloy-ref-primary-50: #e5651b;
-  --alloy-ref-primary-60: #ff7d3d;
-  --alloy-ref-primary-70: #ff9b63;
-  --alloy-ref-primary-80: #ffc199;
-  --alloy-ref-primary-90: #ffdcc4;
-  --alloy-ref-primary-95: #ffeee1;
-  --alloy-ref-primary-99: #fffaf7;
+  --alloy-ref-primary-10: #3a1000;
+  --alloy-ref-primary-20: #591b00;
+  --alloy-ref-primary-30: #883000;
+  --alloy-ref-primary-40: #b74107;
+  --alloy-ref-primary-50: #ff540d;
+  --alloy-ref-primary-60: #ff7538;
+  --alloy-ref-primary-70: #ff9767;
+  --alloy-ref-primary-80: #ffbc9c;
+  --alloy-ref-primary-90: #ffddcc;
+  --alloy-ref-primary-95: #ffeee4;
+  --alloy-ref-primary-99: #fff9f6;
   --alloy-ref-primary-100: #ffffff;
 
-  /* Deep Red (secondary — brick/oxblood, deliberately grounded).
-     ┌─────────────────────────────────────────────────────────────────────┐
-     │ RESERVED ROLE. Secondary is NOT a general accent. Allowed uses:      │
-     │  • "serious" secondary CTAs sitting next to a primary orange one     │
-     │  • emphasis text, small tag / badge / chip treatments               │
-     │ NOT allowed: large surface fills, or competing head-on with orange   │
-     │ at equal saturation inside the same component. If it starts spreading│
-     │ the system is drifting off what made it scannable.                   │
-     └─────────────────────────────────────────────────────────────────────┘ */
+  /* Pink / Magenta (secondary) — brand hue is tone 50, #E80C7A.
+     A full peer accent — it carries alternate CTAs, highlights, and the
+     second stop of the brand gradients. Not "reserved". */
   --alloy-ref-secondary-0: #000000;
-  --alloy-ref-secondary-10: #2b0605;
-  --alloy-ref-secondary-20: #450a08;
-  --alloy-ref-secondary-30: #6b120f;
-  --alloy-ref-secondary-40: #8a1d18;
-  --alloy-ref-secondary-50: #a8251d;
-  --alloy-ref-secondary-60: #c23328;
-  --alloy-ref-secondary-70: #d9584d;
-  --alloy-ref-secondary-80: #f0b3ac;
-  --alloy-ref-secondary-90: #f6d9d6;
-  --alloy-ref-secondary-95: #fbebe9;
+  --alloy-ref-secondary-10: #3f001f;
+  --alloy-ref-secondary-20: #630033;
+  --alloy-ref-secondary-30: #92004d;
+  --alloy-ref-secondary-40: #b80063;
+  --alloy-ref-secondary-50: #e80c7a;
+  --alloy-ref-secondary-60: #ff4d9e;
+  --alloy-ref-secondary-70: #ff7ab8;
+  --alloy-ref-secondary-80: #ffb0d3;
+  --alloy-ref-secondary-90: #ffd9e9;
+  --alloy-ref-secondary-95: #ffedf4;
 
-  /* True Red (error — distinct hue/sat from secondary deep-red) */
-  --alloy-ref-error-10: #410002;
-  --alloy-ref-error-20: #690005;
-  --alloy-ref-error-30: #93000a;
-  --alloy-ref-error-40: #ba1a1a;
-  --alloy-ref-error-80: #ffb4ab;
-  --alloy-ref-error-90: #ffdad6;
+  /* Pure Red (error) — deliberately the one hot hue never used decoratively,
+     so validation and destructive actions read as outside the palette. */
+  --alloy-ref-error-10: #410000;
+  --alloy-ref-error-20: #6b0000;
+  --alloy-ref-error-30: #9a0000;
+  --alloy-ref-error-40: #cc0000;
+  --alloy-ref-error-50: #ff0000;
+  --alloy-ref-error-80: #ffb3b3;
+  --alloy-ref-error-90: #ffdada;
 
-  /* Neutral — warm-leaning grey + white (carries scannability) */
+  /* Neutral — true grey + white (barely-cool). Carries scannability. */
   --alloy-ref-neutral-0: #000000;
-  --alloy-ref-neutral-4: #0e0c0b;
-  --alloy-ref-neutral-6: #131110;
-  --alloy-ref-neutral-10: #1a1816;
-  --alloy-ref-neutral-12: #1e1b19;
-  --alloy-ref-neutral-17: #262320;
-  --alloy-ref-neutral-20: #2e2b28;
-  --alloy-ref-neutral-22: #322f2b;
-  --alloy-ref-neutral-24: #35322e;
-  --alloy-ref-neutral-30: #47433f;
-  --alloy-ref-neutral-40: #615c57;
-  --alloy-ref-neutral-50: #7c7670;
-  --alloy-ref-neutral-60: #97918a;
-  --alloy-ref-neutral-70: #b4aea7;
-  --alloy-ref-neutral-80: #d1ccc5;
-  --alloy-ref-neutral-87: #e2ded8;
-  --alloy-ref-neutral-90: #e8e4df;
-  --alloy-ref-neutral-92: #edeae5;
-  --alloy-ref-neutral-94: #f1eee9;
-  --alloy-ref-neutral-95: #f4f1ed;
-  --alloy-ref-neutral-96: #f7f4f0;
-  --alloy-ref-neutral-98: #faf8f5;
-  --alloy-ref-neutral-99: #fcfbfa;
+  --alloy-ref-neutral-4: #0a0a0b;
+  --alloy-ref-neutral-6: #0f0f10;
+  --alloy-ref-neutral-10: #171719;
+  --alloy-ref-neutral-12: #1c1c1e;
+  --alloy-ref-neutral-13: #1f1f21;
+  --alloy-ref-neutral-17: #242426;
+  --alloy-ref-neutral-20: #2b2b2d;
+  --alloy-ref-neutral-22: #303032;
+  --alloy-ref-neutral-24: #333335;
+  --alloy-ref-neutral-30: #414143;
+  --alloy-ref-neutral-40: #595859;
+  --alloy-ref-neutral-50: #737375;
+  --alloy-ref-neutral-60: #8c8c8e;
+  --alloy-ref-neutral-70: #a8a8aa;
+  --alloy-ref-neutral-80: #c6c6c8;
+  --alloy-ref-neutral-87: #d7d7d9;
+  --alloy-ref-neutral-90: #e2e2e4;
+  --alloy-ref-neutral-92: #ebebed;
+  --alloy-ref-neutral-94: #f0f0f2;
+  --alloy-ref-neutral-95: #f3f3f5;
+  --alloy-ref-neutral-96: #f6f6f8;
+  --alloy-ref-neutral-98: #fafafb;
+  --alloy-ref-neutral-99: #fcfcfd;
   --alloy-ref-neutral-100: #ffffff;
 
-  /* Neutral variant — slightly warmer/darker than neutral at the same tone,
-     for outlines and borders */
-  --alloy-ref-neutral-variant-20: #302a24;
-  --alloy-ref-neutral-variant-30: #4f473f;
-  --alloy-ref-neutral-variant-40: #6a6157;
-  --alloy-ref-neutral-variant-50: #857c72;
-  --alloy-ref-neutral-variant-60: #a0968b;
-  --alloy-ref-neutral-variant-70: #bbb1a5;
-  --alloy-ref-neutral-variant-80: #d8cfc3;
-  --alloy-ref-neutral-variant-90: #efe7db;
+  /* Neutral variant — a touch more contrast for outlines and borders */
+  --alloy-ref-neutral-variant-20: #2c2c30;
+  --alloy-ref-neutral-variant-30: #444448;
+  --alloy-ref-neutral-variant-40: #5c5c60;
+  --alloy-ref-neutral-variant-50: #757579;
+  --alloy-ref-neutral-variant-60: #8f8f93;
+  --alloy-ref-neutral-variant-70: #aaaaae;
+  --alloy-ref-neutral-variant-80: #c8c8cc;
+  --alloy-ref-neutral-variant-90: #e4e4e8;
 
-  /* Functional status — NOT brand accents. Kept visually distinct from the
-     orange/red brand so "success" and "warning" never read as primary. */
+  /* Functional status — NOT brand accents. Kept clearly off-hue from the
+     orange/pink/red brand so "success" and "warning" never read as decorative. */
   --alloy-ref-success-40: #1e7d4e;
   --alloy-ref-success-80: #8fd9b0;
   --alloy-ref-success-90: #baffd7;
-  --alloy-ref-warning-40: #8a5a00;
-  --alloy-ref-warning-80: #ffc46b;
-  --alloy-ref-warning-90: #ffdfb0;
+  --alloy-ref-warning-40: #6f5b00;
+  --alloy-ref-warning-80: #e8c34a;
+  --alloy-ref-warning-90: #ffe999;
 
-  /* ---- Layer 3: scales (mode independent — UNCHANGED) ---------------- */
+  /* ---- Layer 3: scales (mode independent) --------------------------- */
+
+  /* Brand gradients — orange ↔ pink. Use for depth on hero sections, brand
+     marks, and (sparingly) high-emphasis surfaces. `-depth` is an ambient
+     wash for large backgrounds. */
+  --alloy-gradient-warm: linear-gradient(135deg, #ff540d 0%, #e80c7a 100%);
+  --alloy-gradient-warm-reverse: linear-gradient(135deg, #e80c7a 0%, #ff540d 100%);
+  --alloy-gradient-warm-soft: linear-gradient(135deg, #ff7538 0%, #ff7ab8 100%);
+  --alloy-gradient-warm-vivid: linear-gradient(120deg, #ff540d 0%, #ff0d3d 45%, #e80c7a 100%);
+  --alloy-gradient-depth:
+    radial-gradient(130% 130% at 0% 0%, rgba(255, 84, 13, 0.16) 0%, transparent 58%),
+    radial-gradient(130% 130% at 100% 100%, rgba(232, 12, 122, 0.16) 0%, transparent 58%);
 
   /* Spacing — 4px grid */
   --alloy-space-0: 0;
@@ -204,7 +210,7 @@
   --alloy-focus-ring-width: 2px;
   --alloy-focus-ring-offset: 2px;
 
-  /* Aspect ratios — for media slots, image containers, embeds */
+  /* Aspect ratios */
   --alloy-aspect-square: 1 / 1;
   --alloy-aspect-video: 16 / 9;
   --alloy-aspect-photo: 4 / 3;
@@ -224,9 +230,10 @@
 [data-alloy-theme="light"] {
   color-scheme: light;
 
-  /* primary-40 (#C24A0E) — white text passes WCAG AA (4.91:1). primary-50 was
-     brighter but only 3.38:1 on white; kept in the ramp for large-text / chrome. */
+  /* primary-40 (#B74107) — white text passes WCAG AA (5.6:1). primary-50
+     (#FF540D, the brand orange) is 3.2:1 on white — large-text / chrome only. */
   --alloy-sys-primary: var(--alloy-ref-primary-40);
+  --alloy-sys-primary-bright: var(--alloy-ref-primary-50);
   --alloy-sys-on-primary: #ffffff;
   --alloy-sys-primary-container: var(--alloy-ref-primary-90);
   --alloy-sys-on-primary-container: var(--alloy-ref-primary-10);
@@ -234,7 +241,9 @@
   --alloy-sys-link: var(--alloy-ref-primary-40);
   --alloy-sys-link-visited: var(--alloy-ref-secondary-40);
 
-  --alloy-sys-secondary: var(--alloy-ref-secondary-30);
+  /* secondary-40 (#B80063) — white text 6.6:1. secondary-50 is the brand pink. */
+  --alloy-sys-secondary: var(--alloy-ref-secondary-40);
+  --alloy-sys-secondary-bright: var(--alloy-ref-secondary-50);
   --alloy-sys-on-secondary: #ffffff;
   --alloy-sys-secondary-container: var(--alloy-ref-secondary-90);
   --alloy-sys-on-secondary-container: var(--alloy-ref-secondary-10);
@@ -248,6 +257,11 @@
   --alloy-sys-on-success: #ffffff;
   --alloy-sys-warning: var(--alloy-ref-warning-40);
   --alloy-sys-on-warning: #ffffff;
+
+  /* Semantic gradient — orange → pink. `on-gradient` is always white. */
+  --alloy-sys-gradient: var(--alloy-gradient-warm);
+  --alloy-sys-gradient-reverse: var(--alloy-gradient-warm-reverse);
+  --alloy-sys-on-gradient: #ffffff;
 
   --alloy-sys-background: var(--alloy-ref-neutral-99);
   --alloy-sys-on-background: var(--alloy-ref-neutral-10);
@@ -273,31 +287,32 @@
   --alloy-sys-shadow: var(--alloy-ref-neutral-0);
   --alloy-sys-scrim: var(--alloy-ref-neutral-0);
 
-  /* Elevation — soft & low-alpha. Levels 1–2 (resting UI: inputs, cards) stay
-     neutral warm-grey; levels 3–5 (lifted UI: menus, dialogs, popovers) cast a
-     warm orange-brown shadow so raised surfaces read as "coming from the brand". */
+  /* Elevation — clean neutral-grey shadows. Brand depth now comes from the
+     gradient tokens, not tinted shadows. */
   --alloy-elevation-0: none;
-  --alloy-elevation-1: 0 1px 2px rgba(26, 24, 22, 0.08), 0 1px 3px rgba(26, 24, 22, 0.06);
-  --alloy-elevation-2: 0 2px 4px rgba(26, 24, 22, 0.08), 0 4px 10px rgba(26, 24, 22, 0.08);
-  --alloy-elevation-3: 0 4px 8px rgba(138, 58, 10, 0.14), 0 10px 24px rgba(138, 58, 10, 0.12);
-  --alloy-elevation-4: 0 8px 16px rgba(138, 58, 10, 0.16), 0 18px 40px rgba(138, 58, 10, 0.14);
-  --alloy-elevation-5: 0 12px 24px rgba(138, 58, 10, 0.18), 0 28px 56px rgba(122, 44, 4, 0.2);
+  --alloy-elevation-1: 0 1px 2px rgba(20, 20, 24, 0.08), 0 1px 3px rgba(20, 20, 24, 0.06);
+  --alloy-elevation-2: 0 2px 4px rgba(20, 20, 24, 0.08), 0 4px 10px rgba(20, 20, 24, 0.08);
+  --alloy-elevation-3: 0 4px 8px rgba(20, 20, 24, 0.1), 0 10px 24px rgba(20, 20, 24, 0.1);
+  --alloy-elevation-4: 0 8px 16px rgba(20, 20, 24, 0.12), 0 18px 40px rgba(20, 20, 24, 0.12);
+  --alloy-elevation-5: 0 12px 24px rgba(20, 20, 24, 0.14), 0 28px 56px rgba(20, 20, 24, 0.16);
 }
 
 /* ---- Layer 2: system roles — DARK -------------------------------- */
 [data-alloy-theme="dark"] {
   color-scheme: dark;
 
-  --alloy-sys-primary: var(--alloy-ref-primary-70);
-  --alloy-sys-on-primary: var(--alloy-ref-primary-20);
+  --alloy-sys-primary: var(--alloy-ref-primary-60);
+  --alloy-sys-primary-bright: var(--alloy-ref-primary-50);
+  --alloy-sys-on-primary: var(--alloy-ref-primary-10);
   --alloy-sys-primary-container: var(--alloy-ref-primary-30);
   --alloy-sys-on-primary-container: var(--alloy-ref-primary-90);
 
-  --alloy-sys-link: var(--alloy-ref-primary-70);
+  --alloy-sys-link: var(--alloy-ref-primary-60);
   --alloy-sys-link-visited: var(--alloy-ref-secondary-70);
 
   --alloy-sys-secondary: var(--alloy-ref-secondary-60);
-  --alloy-sys-on-secondary: var(--alloy-ref-secondary-20);
+  --alloy-sys-secondary-bright: var(--alloy-ref-secondary-50);
+  --alloy-sys-on-secondary: var(--alloy-ref-secondary-10);
   --alloy-sys-secondary-container: var(--alloy-ref-secondary-30);
   --alloy-sys-on-secondary-container: var(--alloy-ref-secondary-90);
 
@@ -309,7 +324,11 @@
   --alloy-sys-success: var(--alloy-ref-success-80);
   --alloy-sys-on-success: #04210f;
   --alloy-sys-warning: var(--alloy-ref-warning-80);
-  --alloy-sys-on-warning: #3f2a00;
+  --alloy-sys-on-warning: #2f2600;
+
+  --alloy-sys-gradient: var(--alloy-gradient-warm);
+  --alloy-sys-gradient-reverse: var(--alloy-gradient-warm-reverse);
+  --alloy-sys-on-gradient: #ffffff;
 
   --alloy-sys-background: var(--alloy-ref-neutral-6);
   --alloy-sys-on-background: var(--alloy-ref-neutral-90);
@@ -321,7 +340,7 @@
   --alloy-sys-surface-bright: var(--alloy-ref-neutral-24);
   --alloy-sys-surface-container-lowest: var(--alloy-ref-neutral-4);
   --alloy-sys-surface-container-low: var(--alloy-ref-neutral-12);
-  --alloy-sys-surface-container: #22201d;
+  --alloy-sys-surface-container: var(--alloy-ref-neutral-13);
   --alloy-sys-surface-container-high: var(--alloy-ref-neutral-20);
   --alloy-sys-surface-container-highest: var(--alloy-ref-neutral-24);
 
@@ -338,9 +357,9 @@
   --alloy-elevation-0: none;
   --alloy-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
   --alloy-elevation-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.36);
-  --alloy-elevation-3: 0 4px 8px rgba(0, 0, 0, 0.44), 0 10px 24px rgba(60, 20, 0, 0.5);
-  --alloy-elevation-4: 0 8px 16px rgba(0, 0, 0, 0.48), 0 18px 40px rgba(60, 20, 0, 0.52);
-  --alloy-elevation-5: 0 12px 24px rgba(0, 0, 0, 0.52), 0 28px 56px rgba(60, 20, 0, 0.55);
+  --alloy-elevation-3: 0 4px 8px rgba(0, 0, 0, 0.44), 0 10px 24px rgba(0, 0, 0, 0.42);
+  --alloy-elevation-4: 0 8px 16px rgba(0, 0, 0, 0.48), 0 18px 40px rgba(0, 0, 0, 0.44);
+  --alloy-elevation-5: 0 12px 24px rgba(0, 0, 0, 0.52), 0 28px 56px rgba(0, 0, 0, 0.48);
 }
 
 /* Honour OS preference when no explicit theme is set */
@@ -348,16 +367,18 @@
   :root:not([data-alloy-theme="light"]) {
     color-scheme: dark;
 
-    --alloy-sys-primary: var(--alloy-ref-primary-70);
-    --alloy-sys-on-primary: var(--alloy-ref-primary-20);
+    --alloy-sys-primary: var(--alloy-ref-primary-60);
+    --alloy-sys-primary-bright: var(--alloy-ref-primary-50);
+    --alloy-sys-on-primary: var(--alloy-ref-primary-10);
     --alloy-sys-primary-container: var(--alloy-ref-primary-30);
     --alloy-sys-on-primary-container: var(--alloy-ref-primary-90);
 
-    --alloy-sys-link: var(--alloy-ref-primary-70);
+    --alloy-sys-link: var(--alloy-ref-primary-60);
     --alloy-sys-link-visited: var(--alloy-ref-secondary-70);
 
     --alloy-sys-secondary: var(--alloy-ref-secondary-60);
-    --alloy-sys-on-secondary: var(--alloy-ref-secondary-20);
+    --alloy-sys-secondary-bright: var(--alloy-ref-secondary-50);
+    --alloy-sys-on-secondary: var(--alloy-ref-secondary-10);
     --alloy-sys-secondary-container: var(--alloy-ref-secondary-30);
     --alloy-sys-on-secondary-container: var(--alloy-ref-secondary-90);
 
@@ -369,7 +390,11 @@
     --alloy-sys-success: var(--alloy-ref-success-80);
     --alloy-sys-on-success: #04210f;
     --alloy-sys-warning: var(--alloy-ref-warning-80);
-    --alloy-sys-on-warning: #3f2a00;
+    --alloy-sys-on-warning: #2f2600;
+
+    --alloy-sys-gradient: var(--alloy-gradient-warm);
+    --alloy-sys-gradient-reverse: var(--alloy-gradient-warm-reverse);
+    --alloy-sys-on-gradient: #ffffff;
 
     --alloy-sys-background: var(--alloy-ref-neutral-6);
     --alloy-sys-on-background: var(--alloy-ref-neutral-90);
@@ -381,7 +406,7 @@
     --alloy-sys-surface-bright: var(--alloy-ref-neutral-24);
     --alloy-sys-surface-container-lowest: var(--alloy-ref-neutral-4);
     --alloy-sys-surface-container-low: var(--alloy-ref-neutral-12);
-    --alloy-sys-surface-container: #22201d;
+    --alloy-sys-surface-container: var(--alloy-ref-neutral-13);
     --alloy-sys-surface-container-high: var(--alloy-ref-neutral-20);
     --alloy-sys-surface-container-highest: var(--alloy-ref-neutral-24);
 
@@ -397,8 +422,8 @@
 
     --alloy-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
     --alloy-elevation-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.36);
-    --alloy-elevation-3: 0 4px 8px rgba(0, 0, 0, 0.44), 0 10px 24px rgba(60, 20, 0, 0.5);
-    --alloy-elevation-4: 0 8px 16px rgba(0, 0, 0, 0.48), 0 18px 40px rgba(60, 20, 0, 0.52);
-    --alloy-elevation-5: 0 12px 24px rgba(0, 0, 0, 0.52), 0 28px 56px rgba(60, 20, 0, 0.55);
+    --alloy-elevation-3: 0 4px 8px rgba(0, 0, 0, 0.44), 0 10px 24px rgba(0, 0, 0, 0.42);
+    --alloy-elevation-4: 0 8px 16px rgba(0, 0, 0, 0.48), 0 18px 40px rgba(0, 0, 0, 0.44);
+    --alloy-elevation-5: 0 12px 24px rgba(0, 0, 0, 0.52), 0 28px 56px rgba(0, 0, 0, 0.48);
   }
 }

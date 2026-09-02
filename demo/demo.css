@@ -27,7 +27,21 @@ body {
   width: 22px;
   height: 22px;
   border-radius: var(--alloy-radius-xs);
-  background: linear-gradient(135deg, var(--alloy-sys-primary), var(--alloy-sys-secondary));
+  background-image: var(--alloy-gradient-warm);
+}
+
+.demo-section__head.demo-hero { gap: var(--alloy-space-4); }
+.demo-hero__title { letter-spacing: var(--alloy-tracking-tight); }
+
+.demo-depth {
+  margin-top: var(--alloy-space-6);
+  padding: var(--alloy-space-7);
+  border-radius: var(--alloy-radius-lg);
+  border: 1px solid var(--alloy-sys-outline-variant);
+  background-color: var(--alloy-sys-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--alloy-space-2);
 }
 
 .demo-main {
@@ -66,6 +80,7 @@ body {
 }
 .demo-swatch__chip { height: 44px; border-radius: var(--alloy-radius-sm); border: 1px solid var(--alloy-sys-outline-variant); }
 .demo-swatch__name { font: var(--alloy-type-label-sm); color: var(--alloy-sys-on-surface-variant); }
+.demo-swatch__hex { font: var(--alloy-type-body-sm); color: var(--alloy-sys-on-surface-variant); opacity: 0.8; }
 
 .demo-type-specimen { display: flex; flex-direction: column; gap: var(--alloy-space-3); }
 .demo-type-specimen > * { margin: 0; }

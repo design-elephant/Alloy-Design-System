@@ -69,17 +69,24 @@ function ThemeToggle() {
 
 const SWATCHES = [
   "sys-primary",
-  "sys-primary-container",
+  "sys-primary-bright",
   "sys-secondary",
-  "sys-secondary-container",
+  "sys-secondary-bright",
   "sys-error",
-  "sys-error-container",
-  "sys-surface",
+  "sys-primary-container",
+  "sys-secondary-container",
   "sys-surface-container",
   "sys-surface-container-high",
   "sys-outline",
   "sys-on-surface",
   "sys-on-surface-variant",
+];
+
+const GRADIENTS: [string, string][] = [
+  ["--alloy-gradient-warm", "orange → pink"],
+  ["--alloy-gradient-warm-reverse", "pink → orange"],
+  ["--alloy-gradient-warm-soft", "soft"],
+  ["--alloy-gradient-warm-vivid", "vivid (orange · red · pink)"],
 ];
 
 // role → [weight, size/line-height, tracking] — must match tokens.css
@@ -110,6 +117,7 @@ const BUTTON_SPEC: [string, string, string, string, string][] = [
 
 const BUTTON_COLOR_SPEC: [string, string, string][] = [
   ["filled", "--alloy-sys-primary", "--alloy-sys-on-primary"],
+  ["gradient", "--alloy-sys-gradient (orange → pink)", "--alloy-sys-on-gradient"],
   ["tonal", "--alloy-sys-primary-container", "--alloy-sys-on-primary-container"],
   ["elevated", "--alloy-sys-surface-container-low + elev-1", "--alloy-sys-primary"],
   ["outlined", "transparent · 1px --alloy-sys-outline", "--alloy-sys-primary"],
@@ -139,15 +147,18 @@ function Showcase() {
       </header>
 
       <main className="demo-main">
-        <div className="demo-section__head">
-          <Text role="display-sm">A system for creative work.</Text>
+        <div className="demo-section__head demo-hero">
+          <Text role="display-md" as="h1" className="demo-hero__title">
+            Hot accents on a{" "}
+            <span className="alloy-gradient-text">neutral field.</span>
+          </Text>
           <Text role="body-lg" color="muted">
-            Material 3's color roles, state layers, elevation and motion on an
-            orange lead, a reserved deep-red for weight, and warm grey carrying
-            the scan. Generous rounding, brisk motion — confident and easy to
-            read.
+            Material 3's color roles, state layers, elevation and motion — on an
+            orange lead and a pink peer accent over true grey. Depth comes from
+            orange↔pink gradients, not tinted shadows.
           </Text>
           <div className="demo-row" style={{ marginTop: "8px" }}>
+            <Button variant="gradient">Get started</Button>
             <Button variant="filled">Primary action</Button>
             <Button
               variant="filled"
@@ -156,7 +167,7 @@ function Showcase() {
                 color: "var(--alloy-sys-on-secondary)",
               }}
             >
-              Secondary
+              Pink accent
             </Button>
             <Button variant="tonal">Tonal</Button>
             <Button variant="text">Learn more</Button>
@@ -174,6 +185,34 @@ function Showcase() {
                 <span className="demo-swatch__name">--alloy-{name}</span>
               </div>
             ))}
+          </div>
+        </Section>
+
+        <Section
+          title="Gradients"
+          desc="Orange ↔ pink, for depth on hero sections, brand marks and high-emphasis surfaces. --alloy-gradient-depth is an ambient wash for large backgrounds."
+        >
+          <div className="demo-swatches">
+            {GRADIENTS.map(([v, label]) => (
+              <div className="demo-swatch" key={v}>
+                <div
+                  className="demo-swatch__chip"
+                  style={{ backgroundImage: `var(${v})` }}
+                />
+                <span className="demo-swatch__name">{v}</span>
+                <span className="demo-swatch__hex">{label}</span>
+              </div>
+            ))}
+          </div>
+          <div
+            className="demo-depth"
+            style={{ backgroundImage: "var(--alloy-gradient-depth)" }}
+          >
+            <Text role="title-md">--alloy-gradient-depth</Text>
+            <Text role="body-sm" color="muted">
+              Two low-alpha radial washes (orange from the top-left, pink from the
+              bottom-right) — sits under content to add depth without a hard edge.
+            </Text>
           </div>
         </Section>
 
@@ -206,9 +245,10 @@ function Showcase() {
           </div>
         </Section>
 
-        <Section title="Button" desc="Six variants, three sizes. Full spec below — size, spacing, radius, colour tokens, states.">
+        <Section title="Button" desc="Seven variants, three sizes. Full spec below — size, spacing, radius, colour tokens, states.">
           <div className="demo-row">
             <Button variant="filled">Filled</Button>
+            <Button variant="gradient">Gradient</Button>
             <Button variant="tonal">Tonal</Button>
             <Button variant="elevated">Elevated</Button>
             <Button variant="outlined">Outlined</Button>
@@ -416,7 +456,7 @@ function Showcase() {
           />
         </Section>
 
-        <Section title="Elevation" desc="Levels 1–2 stay neutral; 3–5 cast a warm orange-brown shadow so lifted surfaces read as branded.">
+        <Section title="Elevation" desc="Clean neutral-grey shadows, five levels. Brand depth comes from the gradient tokens now, not tinted shadows.">
           <div className="demo-row" style={{ gap: "24px", flexWrap: "wrap" }}>
             {[1, 2, 3, 4, 5].map((lvl) => (
               <div

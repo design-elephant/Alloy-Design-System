@@ -4,6 +4,7 @@ import "./Button.css";
 
 export type ButtonVariant =
   | "filled"
+  | "gradient"
   | "tonal"
   | "outlined"
   | "text"

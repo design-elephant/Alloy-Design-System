@@ -74,6 +74,7 @@ export type { PopoverProps, PopoverPlacement } from "./components/Popover";
 export {
   tokens,
   color,
+  gradient,
   space,
   radius,
   elevation,

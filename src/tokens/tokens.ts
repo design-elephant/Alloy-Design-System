@@ -7,12 +7,14 @@ const cssVar = (name: string) => `var(--alloy-${name})`;
 
 export const color = {
   primary: cssVar("sys-primary"),
+  primaryBright: cssVar("sys-primary-bright"),
   onPrimary: cssVar("sys-on-primary"),
   primaryContainer: cssVar("sys-primary-container"),
   onPrimaryContainer: cssVar("sys-on-primary-container"),
   link: cssVar("sys-link"),
   linkVisited: cssVar("sys-link-visited"),
   secondary: cssVar("sys-secondary"),
+  secondaryBright: cssVar("sys-secondary-bright"),
   onSecondary: cssVar("sys-on-secondary"),
   secondaryContainer: cssVar("sys-secondary-container"),
   onSecondaryContainer: cssVar("sys-on-secondary-container"),
@@ -37,6 +39,21 @@ export const color = {
   inverseSurface: cssVar("sys-inverse-surface"),
   inverseOnSurface: cssVar("sys-inverse-on-surface"),
   scrim: cssVar("sys-scrim"),
+} as const;
+
+/** Brand gradients — orange ↔ pink, for depth on hero / brand surfaces. */
+export const gradient = {
+  /** semantic: orange → pink */
+  brand: cssVar("sys-gradient"),
+  /** semantic: pink → orange */
+  brandReverse: cssVar("sys-gradient-reverse"),
+  onBrand: cssVar("sys-on-gradient"),
+  warm: cssVar("gradient-warm"),
+  warmReverse: cssVar("gradient-warm-reverse"),
+  warmSoft: cssVar("gradient-warm-soft"),
+  warmVivid: cssVar("gradient-warm-vivid"),
+  /** ambient wash for large backgrounds */
+  depth: cssVar("gradient-depth"),
 } as const;
 
 export const space = Object.fromEntries(
@@ -120,6 +137,7 @@ export const state = {
 
 export const tokens = {
   color,
+  gradient,
   space,
   radius,
   elevation,
