@@ -1,0 +1,606 @@
+<title>Alloy Design System</title>
+<meta name="description" content="The reference page for Alloy — a React design system with Material 3 semantics on an Orange / warm Grey / Deep Red palette." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..200&display=block" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   Alloy tokens — the system this page documents, compiled.
+   The page is built entirely from these tokens: no separate palette.
+   ============================================================ */
+:root{--alloy-ref-primary-0:#000;--alloy-ref-primary-10:#3d1400;--alloy-ref-primary-20:#5c1f00;--alloy-ref-primary-30:#8a3a0a;--alloy-ref-primary-40:#c24a0e;--alloy-ref-primary-50:#e5651b;--alloy-ref-primary-60:#ff7d3d;--alloy-ref-primary-70:#ff9b63;--alloy-ref-primary-80:#ffc199;--alloy-ref-primary-90:#ffdcc4;--alloy-ref-primary-95:#ffeee1;--alloy-ref-primary-99:#fffaf7;--alloy-ref-primary-100:#fff;--alloy-ref-secondary-0:#000;--alloy-ref-secondary-10:#2b0605;--alloy-ref-secondary-20:#450a08;--alloy-ref-secondary-30:#6b120f;--alloy-ref-secondary-40:#8a1d18;--alloy-ref-secondary-50:#a8251d;--alloy-ref-secondary-60:#c23328;--alloy-ref-secondary-70:#d9584d;--alloy-ref-secondary-80:#f0b3ac;--alloy-ref-secondary-90:#f6d9d6;--alloy-ref-secondary-95:#fbebe9;--alloy-ref-error-10:#410002;--alloy-ref-error-20:#690005;--alloy-ref-error-30:#93000a;--alloy-ref-error-40:#ba1a1a;--alloy-ref-error-80:#ffb4ab;--alloy-ref-error-90:#ffdad6;--alloy-ref-neutral-0:#000;--alloy-ref-neutral-4:#0e0c0b;--alloy-ref-neutral-6:#131110;--alloy-ref-neutral-10:#1a1816;--alloy-ref-neutral-12:#1e1b19;--alloy-ref-neutral-17:#262320;--alloy-ref-neutral-20:#2e2b28;--alloy-ref-neutral-22:#322f2b;--alloy-ref-neutral-24:#35322e;--alloy-ref-neutral-30:#47433f;--alloy-ref-neutral-40:#615c57;--alloy-ref-neutral-50:#7c7670;--alloy-ref-neutral-60:#97918a;--alloy-ref-neutral-70:#b4aea7;--alloy-ref-neutral-80:#d1ccc5;--alloy-ref-neutral-87:#e2ded8;--alloy-ref-neutral-90:#e8e4df;--alloy-ref-neutral-92:#edeae5;--alloy-ref-neutral-94:#f1eee9;--alloy-ref-neutral-95:#f4f1ed;--alloy-ref-neutral-96:#f7f4f0;--alloy-ref-neutral-98:#faf8f5;--alloy-ref-neutral-99:#fcfbfa;--alloy-ref-neutral-100:#fff;--alloy-ref-neutral-variant-20:#302a24;--alloy-ref-neutral-variant-30:#4f473f;--alloy-ref-neutral-variant-40:#6a6157;--alloy-ref-neutral-variant-50:#857c72;--alloy-ref-neutral-variant-60:#a0968b;--alloy-ref-neutral-variant-70:#bbb1a5;--alloy-ref-neutral-variant-80:#d8cfc3;--alloy-ref-neutral-variant-90:#efe7db;--alloy-ref-success-40:#1e7d4e;--alloy-ref-success-80:#8fd9b0;--alloy-ref-success-90:#baffd7;--alloy-ref-warning-40:#8a5a00;--alloy-ref-warning-80:#ffc46b;--alloy-ref-warning-90:#ffdfb0;--alloy-space-0:0;--alloy-space-1:2px;--alloy-space-2:4px;--alloy-space-3:8px;--alloy-space-4:12px;--alloy-space-5:16px;--alloy-space-6:20px;--alloy-space-7:24px;--alloy-space-8:32px;--alloy-space-9:40px;--alloy-space-10:48px;--alloy-space-11:64px;--alloy-space-12:80px;--alloy-radius-none:0;--alloy-radius-xs:3px;--alloy-radius-sm:6px;--alloy-radius-md:10px;--alloy-radius-lg:14px;--alloy-radius-xl:20px;--alloy-radius-2xl:28px;--alloy-radius-full:999px;--alloy-font-sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--alloy-font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--alloy-weight-regular:400;--alloy-weight-medium:500;--alloy-weight-semibold:600;--alloy-weight-bold:700;--alloy-type-display-lg:700 46px/52px var(--alloy-font-sans);--alloy-type-display-md:700 37px/44px var(--alloy-font-sans);--alloy-type-display-sm:700 29px/36px var(--alloy-font-sans);--alloy-type-headline-lg:700 24px/32px var(--alloy-font-sans);--alloy-type-headline-md:600 20px/28px var(--alloy-font-sans);--alloy-type-headline-sm:600 18px/26px var(--alloy-font-sans);--alloy-type-title-lg:600 16px/24px var(--alloy-font-sans);--alloy-type-title-md:600 14px/20px var(--alloy-font-sans);--alloy-type-title-sm:600 12px/16px var(--alloy-font-sans);--alloy-type-body-lg:400 16px/26px var(--alloy-font-sans);--alloy-type-body-md:400 14px/22px var(--alloy-font-sans);--alloy-type-body-sm:400 12px/18px var(--alloy-font-sans);--alloy-type-label-lg:600 14px/20px var(--alloy-font-sans);--alloy-type-label-md:600 12px/16px var(--alloy-font-sans);--alloy-type-label-sm:600 11px/16px var(--alloy-font-sans);--alloy-tracking-tight:-.015em;--alloy-tracking-normal:0;--alloy-tracking-wide:.01em;--alloy-ease-standard:cubic-bezier(.2,0,0,1);--alloy-ease-decelerate:cubic-bezier(0,0,0,1);--alloy-ease-accelerate:cubic-bezier(.3,0,1,1);--alloy-ease-emphasized:cubic-bezier(.34,1.56,.64,1);--alloy-duration-1:80ms;--alloy-duration-2:.12s;--alloy-duration-3:.18s;--alloy-duration-4:.26s;--alloy-duration-5:.34s;--alloy-state-hover:.08;--alloy-state-focus:.1;--alloy-state-pressed:.1;--alloy-state-disabled-content:.38;--alloy-state-disabled-container:.12;--alloy-focus-ring-width:2px;--alloy-focus-ring-offset:2px;--alloy-aspect-video:16/9}
+:root,[data-alloy-theme=light]{color-scheme:light;--alloy-sys-primary:var(--alloy-ref-primary-40);--alloy-sys-on-primary:#fff;--alloy-sys-primary-container:var(--alloy-ref-primary-90);--alloy-sys-on-primary-container:var(--alloy-ref-primary-10);--alloy-sys-link:var(--alloy-ref-primary-40);--alloy-sys-link-visited:var(--alloy-ref-secondary-40);--alloy-sys-secondary:var(--alloy-ref-secondary-30);--alloy-sys-on-secondary:#fff;--alloy-sys-secondary-container:var(--alloy-ref-secondary-90);--alloy-sys-on-secondary-container:var(--alloy-ref-secondary-10);--alloy-sys-error:var(--alloy-ref-error-40);--alloy-sys-on-error:#fff;--alloy-sys-error-container:var(--alloy-ref-error-90);--alloy-sys-on-error-container:var(--alloy-ref-error-10);--alloy-sys-success:var(--alloy-ref-success-40);--alloy-sys-on-success:#fff;--alloy-sys-warning:var(--alloy-ref-warning-40);--alloy-sys-on-warning:#fff;--alloy-sys-background:var(--alloy-ref-neutral-99);--alloy-sys-on-background:var(--alloy-ref-neutral-10);--alloy-sys-surface:var(--alloy-ref-neutral-99);--alloy-sys-on-surface:var(--alloy-ref-neutral-10);--alloy-sys-on-surface-variant:var(--alloy-ref-neutral-30);--alloy-sys-surface-dim:var(--alloy-ref-neutral-87);--alloy-sys-surface-bright:var(--alloy-ref-neutral-100);--alloy-sys-surface-container-lowest:var(--alloy-ref-neutral-100);--alloy-sys-surface-container-low:var(--alloy-ref-neutral-96);--alloy-sys-surface-container:var(--alloy-ref-neutral-95);--alloy-sys-surface-container-high:var(--alloy-ref-neutral-90);--alloy-sys-surface-container-highest:var(--alloy-ref-neutral-87);--alloy-sys-outline:var(--alloy-ref-neutral-variant-50);--alloy-sys-outline-variant:var(--alloy-ref-neutral-variant-80);--alloy-sys-inverse-surface:var(--alloy-ref-neutral-20);--alloy-sys-inverse-on-surface:var(--alloy-ref-neutral-95);--alloy-sys-inverse-primary:var(--alloy-ref-primary-70);--alloy-sys-shadow:var(--alloy-ref-neutral-0);--alloy-sys-scrim:var(--alloy-ref-neutral-0);--alloy-elevation-0:none;--alloy-elevation-1:0 1px 2px rgba(26,24,22,.08),0 1px 3px rgba(26,24,22,.06);--alloy-elevation-2:0 2px 4px rgba(26,24,22,.08),0 4px 10px rgba(26,24,22,.08);--alloy-elevation-3:0 4px 8px rgba(138,58,10,.14),0 10px 24px rgba(138,58,10,.12);--alloy-elevation-4:0 8px 16px rgba(138,58,10,.16),0 18px 40px rgba(138,58,10,.14);--alloy-elevation-5:0 12px 24px rgba(138,58,10,.18),0 28px 56px rgba(122,44,4,.2)}
+:root[data-alloy-theme=dark],:root[data-theme=dark]{color-scheme:dark;--alloy-sys-primary:var(--alloy-ref-primary-70);--alloy-sys-on-primary:var(--alloy-ref-primary-20);--alloy-sys-primary-container:var(--alloy-ref-primary-30);--alloy-sys-on-primary-container:var(--alloy-ref-primary-90);--alloy-sys-link:var(--alloy-ref-primary-70);--alloy-sys-link-visited:var(--alloy-ref-secondary-70);--alloy-sys-secondary:var(--alloy-ref-secondary-60);--alloy-sys-on-secondary:var(--alloy-ref-secondary-20);--alloy-sys-secondary-container:var(--alloy-ref-secondary-30);--alloy-sys-on-secondary-container:var(--alloy-ref-secondary-90);--alloy-sys-error:var(--alloy-ref-error-80);--alloy-sys-on-error:var(--alloy-ref-error-20);--alloy-sys-error-container:var(--alloy-ref-error-30);--alloy-sys-on-error-container:var(--alloy-ref-error-90);--alloy-sys-success:var(--alloy-ref-success-80);--alloy-sys-on-success:#04210f;--alloy-sys-warning:var(--alloy-ref-warning-80);--alloy-sys-on-warning:#3f2a00;--alloy-sys-background:var(--alloy-ref-neutral-6);--alloy-sys-on-background:var(--alloy-ref-neutral-90);--alloy-sys-surface:var(--alloy-ref-neutral-10);--alloy-sys-on-surface:var(--alloy-ref-neutral-90);--alloy-sys-on-surface-variant:var(--alloy-ref-neutral-80);--alloy-sys-surface-dim:var(--alloy-ref-neutral-6);--alloy-sys-surface-bright:var(--alloy-ref-neutral-24);--alloy-sys-surface-container-lowest:var(--alloy-ref-neutral-4);--alloy-sys-surface-container-low:var(--alloy-ref-neutral-12);--alloy-sys-surface-container:#22201d;--alloy-sys-surface-container-high:var(--alloy-ref-neutral-20);--alloy-sys-surface-container-highest:var(--alloy-ref-neutral-24);--alloy-sys-outline:var(--alloy-ref-neutral-variant-50);--alloy-sys-outline-variant:var(--alloy-ref-neutral-variant-30);--alloy-sys-inverse-surface:var(--alloy-ref-neutral-90);--alloy-sys-inverse-on-surface:var(--alloy-ref-neutral-20);--alloy-sys-inverse-primary:var(--alloy-ref-primary-40);--alloy-sys-shadow:#000;--alloy-sys-scrim:#000;--alloy-elevation-1:0 1px 2px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.3);--alloy-elevation-2:0 2px 4px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.36);--alloy-elevation-3:0 4px 8px rgba(0,0,0,.44),0 10px 24px rgba(60,20,0,.5);--alloy-elevation-4:0 8px 16px rgba(0,0,0,.48),0 18px 40px rgba(60,20,0,.52);--alloy-elevation-5:0 12px 24px rgba(0,0,0,.52),0 28px 56px rgba(60,20,0,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]):not([data-alloy-theme=light]){color-scheme:dark;--alloy-sys-primary:var(--alloy-ref-primary-70);--alloy-sys-on-primary:var(--alloy-ref-primary-20);--alloy-sys-primary-container:var(--alloy-ref-primary-30);--alloy-sys-on-primary-container:var(--alloy-ref-primary-90);--alloy-sys-link:var(--alloy-ref-primary-70);--alloy-sys-link-visited:var(--alloy-ref-secondary-70);--alloy-sys-secondary:var(--alloy-ref-secondary-60);--alloy-sys-on-secondary:var(--alloy-ref-secondary-20);--alloy-sys-secondary-container:var(--alloy-ref-secondary-30);--alloy-sys-on-secondary-container:var(--alloy-ref-secondary-90);--alloy-sys-error:var(--alloy-ref-error-80);--alloy-sys-on-error:var(--alloy-ref-error-20);--alloy-sys-error-container:var(--alloy-ref-error-30);--alloy-sys-on-error-container:var(--alloy-ref-error-90);--alloy-sys-success:var(--alloy-ref-success-80);--alloy-sys-on-success:#04210f;--alloy-sys-warning:var(--alloy-ref-warning-80);--alloy-sys-on-warning:#3f2a00;--alloy-sys-background:var(--alloy-ref-neutral-6);--alloy-sys-on-background:var(--alloy-ref-neutral-90);--alloy-sys-surface:var(--alloy-ref-neutral-10);--alloy-sys-on-surface:var(--alloy-ref-neutral-90);--alloy-sys-on-surface-variant:var(--alloy-ref-neutral-80);--alloy-sys-surface-dim:var(--alloy-ref-neutral-6);--alloy-sys-surface-bright:var(--alloy-ref-neutral-24);--alloy-sys-surface-container-lowest:var(--alloy-ref-neutral-4);--alloy-sys-surface-container-low:var(--alloy-ref-neutral-12);--alloy-sys-surface-container:#22201d;--alloy-sys-surface-container-high:var(--alloy-ref-neutral-20);--alloy-sys-surface-container-highest:var(--alloy-ref-neutral-24);--alloy-sys-outline:var(--alloy-ref-neutral-variant-50);--alloy-sys-outline-variant:var(--alloy-ref-neutral-variant-30);--alloy-sys-inverse-surface:var(--alloy-ref-neutral-90);--alloy-sys-inverse-on-surface:var(--alloy-ref-neutral-20);--alloy-sys-inverse-primary:var(--alloy-ref-primary-40);--alloy-sys-shadow:#000;--alloy-sys-scrim:#000;--alloy-elevation-1:0 1px 2px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.3);--alloy-elevation-2:0 2px 4px rgba(0,0,0,.4),0 4px 10px rgba(0,0,0,.36);--alloy-elevation-3:0 4px 8px rgba(0,0,0,.44),0 10px 24px rgba(60,20,0,.5);--alloy-elevation-4:0 8px 16px rgba(0,0,0,.48),0 18px 40px rgba(60,20,0,.52);--alloy-elevation-5:0 12px 24px rgba(0,0,0,.52),0 28px 56px rgba(60,20,0,.55)}}
+
+/* ---- Alloy component classes (compiled subset used on this page) ---- */
+*,*::before,*::after{box-sizing:border-box}
+.alloy-focusable{outline:none}
+.alloy-focusable:focus-visible{outline:var(--alloy-focus-ring-width) solid var(--alloy-sys-primary);outline-offset:var(--alloy-focus-ring-offset)}
+.alloy-state-layer{position:absolute;inset:0;z-index:0;border-radius:inherit;background-color:var(--_state,currentColor);opacity:0;pointer-events:none;transition:opacity var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-btn{--_state:var(--alloy-sys-primary);position:relative;display:inline-flex;align-items:center;justify-content:center;gap:var(--alloy-space-2);border:1px solid transparent;border-radius:var(--alloy-radius-lg);font:var(--alloy-type-label-lg);letter-spacing:var(--alloy-tracking-wide);cursor:pointer;white-space:nowrap;transition:background-color var(--alloy-duration-2) var(--alloy-ease-standard),border-color var(--alloy-duration-2) var(--alloy-ease-standard),box-shadow var(--alloy-duration-2) var(--alloy-ease-standard),color var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-btn--sm{height:32px;padding-inline:var(--alloy-space-4);font:var(--alloy-type-label-md);border-radius:var(--alloy-radius-md)}
+.alloy-btn--md{height:40px;padding-inline:var(--alloy-space-5)}
+.alloy-btn--lg{height:48px;padding-inline:var(--alloy-space-7)}
+.alloy-btn__label{position:relative;z-index:1}
+.alloy-btn__icon{position:relative;z-index:1;display:inline-flex;width:18px;height:18px}
+.alloy-btn:hover .alloy-state-layer{opacity:var(--alloy-state-hover)}
+.alloy-btn:active .alloy-state-layer{opacity:var(--alloy-state-pressed)}
+.alloy-btn:focus-visible .alloy-state-layer{opacity:var(--alloy-state-focus)}
+.alloy-btn--filled{background-color:var(--alloy-sys-primary);color:var(--alloy-sys-on-primary);--_state:var(--alloy-sys-on-primary)}
+.alloy-btn--tonal{background-color:var(--alloy-sys-primary-container);color:var(--alloy-sys-on-primary-container);--_state:var(--alloy-sys-on-primary-container)}
+.alloy-btn--elevated{background-color:var(--alloy-sys-surface-container-low);color:var(--alloy-sys-primary);box-shadow:var(--alloy-elevation-1);--_state:var(--alloy-sys-primary)}
+.alloy-btn--elevated:hover{box-shadow:var(--alloy-elevation-2)}
+.alloy-btn--outlined{background-color:transparent;color:var(--alloy-sys-primary);border-color:var(--alloy-sys-outline);--_state:var(--alloy-sys-primary)}
+.alloy-btn--text{background-color:transparent;color:var(--alloy-sys-primary);padding-inline:var(--alloy-space-4);--_state:var(--alloy-sys-primary)}
+.alloy-btn--danger{background-color:var(--alloy-sys-error);color:var(--alloy-sys-on-error);--_state:var(--alloy-sys-on-error)}
+.alloy-btn:disabled{cursor:not-allowed;box-shadow:none;color:color-mix(in srgb,var(--alloy-sys-on-surface) 38%,transparent)}
+.alloy-btn--filled:disabled,.alloy-btn--tonal:disabled,.alloy-btn--danger:disabled{background-color:color-mix(in srgb,var(--alloy-sys-on-surface) 12%,transparent)}
+.alloy-btn:disabled .alloy-state-layer{display:none}
+.alloy-iconbtn{--_state:var(--alloy-sys-on-surface-variant);position:relative;display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:var(--alloy-radius-md);background:transparent;color:var(--alloy-sys-on-surface-variant);cursor:pointer;width:40px;height:40px;transition:background-color var(--alloy-duration-2) var(--alloy-ease-standard),color var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-iconbtn__icon{position:relative;z-index:1;display:inline-flex;width:20px;height:20px}
+.alloy-iconbtn:hover .alloy-state-layer{opacity:var(--alloy-state-hover)}
+.alloy-iconbtn:focus-visible .alloy-state-layer{opacity:var(--alloy-state-focus)}
+.alloy-iconbtn--filled{background-color:var(--alloy-sys-primary);color:var(--alloy-sys-on-primary);--_state:var(--alloy-sys-on-primary)}
+.alloy-iconbtn--tonal{background-color:var(--alloy-sys-primary-container);color:var(--alloy-sys-on-primary-container);--_state:var(--alloy-sys-on-primary-container)}
+.alloy-iconbtn--outlined{border-color:var(--alloy-sys-outline)}
+.alloy-iconbtn--selected{color:var(--alloy-sys-primary);--_state:var(--alloy-sys-primary)}
+.alloy-icon{display:inline-flex;align-items:center;justify-content:center;flex:none;line-height:1;overflow:hidden;font-weight:400;-webkit-font-feature-settings:"liga";user-select:none}
+.material-symbols-rounded{font-family:"Material Symbols Rounded",sans-serif}
+.alloy-field{display:flex;flex-direction:column;gap:var(--alloy-space-2);min-width:0}
+.alloy-field__label{font:var(--alloy-type-label-md);letter-spacing:var(--alloy-tracking-wide);color:var(--alloy-sys-on-surface-variant)}
+.alloy-field__box{display:flex;align-items:center;gap:var(--alloy-space-3);height:44px;padding-inline:var(--alloy-space-4);border-radius:var(--alloy-radius-md);transition:border-color var(--alloy-duration-2) var(--alloy-ease-standard),box-shadow var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-field--outlined .alloy-field__box{border:1px solid var(--alloy-sys-outline)}
+.alloy-field--filled .alloy-field__box{border:1px solid transparent;border-bottom-color:var(--alloy-sys-outline);border-radius:var(--alloy-radius-sm) var(--alloy-radius-sm) 0 0;background-color:var(--alloy-sys-surface-container-high)}
+.alloy-field--pill .alloy-field__box{border-radius:var(--alloy-radius-full);padding-inline:var(--alloy-space-5)}
+.alloy-field--pill.alloy-field--filled .alloy-field__box{border-bottom-color:transparent}
+.alloy-field__box:focus-within{border-color:var(--alloy-sys-primary);box-shadow:inset 0 0 0 1px var(--alloy-sys-primary)}
+.alloy-field--filled .alloy-field__box:focus-within{box-shadow:inset 0 -2px 0 0 var(--alloy-sys-primary)}
+.alloy-field__input{flex:1;min-width:0;border:none;outline:none;background:transparent;color:var(--alloy-sys-on-surface);font:var(--alloy-type-body-md)}
+.alloy-field__input::placeholder{color:var(--alloy-sys-on-surface-variant);opacity:.7}
+.alloy-field__adornment{display:inline-flex;align-items:center;color:var(--alloy-sys-on-surface-variant);width:20px;height:20px}
+.alloy-field__message{margin:0;font:var(--alloy-type-body-sm);color:var(--alloy-sys-on-surface-variant)}
+.alloy-field--error .alloy-field__label,.alloy-field--error .alloy-field__message,.alloy-field--error .alloy-field__adornment{color:var(--alloy-sys-error)}
+.alloy-field--error .alloy-field__box{border-color:var(--alloy-sys-error)}
+.alloy-choice{--_state:var(--alloy-sys-on-surface);display:inline-flex;align-items:center;gap:var(--alloy-space-3);cursor:pointer;font:var(--alloy-type-body-md);color:var(--alloy-sys-on-surface)}
+.alloy-choice__control{position:relative;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex:none;color:var(--alloy-sys-primary)}
+.alloy-choice__control .alloy-state-layer{width:40px;height:40px;inset:auto;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:var(--alloy-radius-full);--_state:var(--alloy-sys-on-surface)}
+.alloy-choice__input{position:absolute;inset:0;margin:0;opacity:0;cursor:inherit}
+.alloy-choice:hover .alloy-state-layer{opacity:var(--alloy-state-hover)}
+.alloy-choice__input:focus-visible~.alloy-state-layer{opacity:var(--alloy-state-focus)}
+.alloy-choice__input:checked~.alloy-state-layer{--_state:var(--alloy-sys-primary)}
+.alloy-choice__control--box{border:2px solid var(--alloy-sys-on-surface-variant);border-radius:var(--alloy-radius-xs);transition:background-color var(--alloy-duration-2) var(--alloy-ease-standard),border-color var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-choice__mark{position:relative;z-index:1;width:100%;height:100%;color:var(--alloy-sys-on-primary)}
+.alloy-choice__check{stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset var(--alloy-duration-3) var(--alloy-ease-standard)}
+.alloy-choice__input:checked~.alloy-choice__mark .alloy-choice__check{stroke-dashoffset:0}
+.alloy-choice__control--box:has(.alloy-choice__input:checked){background-color:var(--alloy-sys-primary);border-color:var(--alloy-sys-primary)}
+.alloy-choice__control--radio{border:2px solid var(--alloy-sys-on-surface-variant);border-radius:var(--alloy-radius-full)}
+.alloy-choice__control--radio:has(.alloy-choice__input:checked){border-color:var(--alloy-sys-primary)}
+.alloy-choice__dot{position:relative;z-index:1;width:10px;height:10px;border-radius:var(--alloy-radius-full);background-color:var(--alloy-sys-primary);transform:scale(0);transition:transform var(--alloy-duration-2) var(--alloy-ease-emphasized)}
+.alloy-choice__input:checked~.alloy-choice__dot{transform:scale(1)}
+.alloy-switch{display:inline-flex;align-items:center;gap:var(--alloy-space-4);cursor:pointer;font:var(--alloy-type-body-md);color:var(--alloy-sys-on-surface)}
+.alloy-switch__track{position:relative;display:inline-flex;align-items:center;width:44px;height:24px;flex:none;border-radius:var(--alloy-radius-full);border:2px solid var(--alloy-sys-outline);background-color:var(--alloy-sys-surface-container-highest);transition:background-color var(--alloy-duration-2) var(--alloy-ease-standard),border-color var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-switch__input{position:absolute;inset:0;margin:0;opacity:0;cursor:inherit}
+.alloy-switch__thumb{position:absolute;left:3px;width:14px;height:14px;border-radius:var(--alloy-radius-full);background-color:var(--alloy-sys-outline);transition:transform var(--alloy-duration-3) var(--alloy-ease-emphasized),width var(--alloy-duration-2) var(--alloy-ease-standard),height var(--alloy-duration-2) var(--alloy-ease-standard),background-color var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-switch__input:checked~.alloy-switch__thumb{transform:translateX(20px);width:18px;height:18px;left:1px;background-color:var(--alloy-sys-on-primary)}
+.alloy-switch__track:has(.alloy-switch__input:checked){background-color:var(--alloy-sys-primary);border-color:var(--alloy-sys-primary)}
+.alloy-chip{--_state:var(--alloy-sys-on-surface);position:relative;display:inline-flex;align-items:center;gap:var(--alloy-space-2);height:32px;padding-inline:var(--alloy-space-4);border:1px solid var(--alloy-sys-outline-variant);border-radius:var(--alloy-radius-full);background:transparent;color:var(--alloy-sys-on-surface-variant);font:var(--alloy-type-label-md);letter-spacing:var(--alloy-tracking-wide);white-space:nowrap}
+.alloy-chip__icon{position:relative;z-index:1;display:inline-flex;width:16px;height:16px;margin-left:calc(var(--alloy-space-2)*-1)}
+.alloy-chip__label{position:relative;z-index:1}
+.alloy-chip--assist{background-color:var(--alloy-sys-surface-container-low)}
+.alloy-chip--input{background-color:var(--alloy-sys-surface-container);border-color:transparent;color:var(--alloy-sys-on-surface)}
+.alloy-chip--selected{background-color:var(--alloy-sys-secondary-container);border-color:transparent;color:var(--alloy-sys-on-secondary-container)}
+.alloy-card{position:relative;display:flex;flex-direction:column;border-radius:var(--alloy-radius-lg);background-color:var(--alloy-sys-surface-container-low);color:var(--alloy-sys-on-surface);overflow:hidden}
+.alloy-card--outlined{background-color:var(--alloy-sys-surface);border:1px solid var(--alloy-sys-outline-variant)}
+.alloy-card--elevated{box-shadow:var(--alloy-elevation-1)}
+.alloy-card__media{position:relative;z-index:1;display:block}
+.alloy-card__content{position:relative;z-index:1;padding:var(--alloy-space-5);display:flex;flex-direction:column;gap:var(--alloy-space-2)}
+.alloy-aspect{position:relative;width:100%;aspect-ratio:var(--_ratio,16/9);overflow:hidden}
+.alloy-aspect>*{position:absolute;inset:0;width:100%;height:100%}
+.alloy-divider{width:100%;height:1px;background-color:var(--alloy-sys-outline-variant);border:0}
+.alloy-breadcrumbs__list{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:var(--alloy-space-2);font:var(--alloy-type-body-sm);color:var(--alloy-sys-on-surface-variant)}
+.alloy-breadcrumbs__item{display:inline-flex;align-items:center}
+.alloy-breadcrumbs__link{color:inherit;text-decoration:none}
+.alloy-breadcrumbs__link:hover{color:var(--alloy-sys-on-surface);text-decoration:underline}
+.alloy-breadcrumbs__current{color:var(--alloy-sys-on-surface);font-weight:600}
+.alloy-breadcrumbs__sep{display:inline-flex;align-items:center;color:var(--alloy-sys-outline)}
+.alloy-tabs{display:flex;flex-direction:column;gap:var(--alloy-space-5)}
+.alloy-tabs__list{display:flex;gap:var(--alloy-space-5);border-bottom:1px solid var(--alloy-sys-outline-variant)}
+.alloy-tabs__tab{--_state:var(--alloy-sys-on-surface);position:relative;display:inline-flex;align-items:center;gap:var(--alloy-space-2);padding:var(--alloy-space-3) var(--alloy-space-1);border:none;background:none;cursor:pointer;white-space:nowrap;font:var(--alloy-type-label-lg);letter-spacing:var(--alloy-tracking-wide);color:var(--alloy-sys-on-surface-variant);transition:color var(--alloy-duration-2) var(--alloy-ease-standard)}
+.alloy-tabs__tab:hover{color:var(--alloy-sys-on-surface)}
+.alloy-tabs__tab[aria-selected=true]{color:var(--alloy-sys-primary)}
+.alloy-tabs__tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;border-radius:var(--alloy-radius-full) var(--alloy-radius-full) 0 0;background-color:var(--alloy-sys-primary);transform:scaleX(0);transition:transform var(--alloy-duration-3) var(--alloy-ease-emphasized)}
+.alloy-tabs__tab[aria-selected=true]::after{transform:scaleX(1)}
+.alloy-tabs__tab-label{position:relative;z-index:1}
+.alloy-tabs__panel[hidden]{display:none}
+
+/* ============================================================
+   Page chrome — built from Alloy tokens, no new palette.
+   ============================================================ */
+body{margin:0;background:var(--alloy-sys-background);color:var(--alloy-sys-on-surface);font-family:var(--alloy-font-sans);-webkit-font-smoothing:antialiased}
+a{color:var(--alloy-sys-link)}
+.mono{font-family:var(--alloy-font-mono);font-size:.82em;letter-spacing:0}
+::selection{background:var(--alloy-sys-primary-container);color:var(--alloy-sys-on-primary-container)}
+
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:var(--alloy-space-5);
+  padding:var(--alloy-space-4) clamp(20px,5vw,56px);
+  background:color-mix(in srgb,var(--alloy-sys-background) 86%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--alloy-sys-outline-variant)}
+.brand{display:flex;align-items:center;gap:var(--alloy-space-3)}
+.brand__mark{width:24px;height:24px;border-radius:var(--alloy-radius-sm);
+  background:linear-gradient(135deg,var(--alloy-ref-primary-50),var(--alloy-ref-secondary-40));flex:none}
+.brand__name{font:var(--alloy-type-title-lg);letter-spacing:var(--alloy-tracking-tight)}
+.tag{display:inline-flex;align-items:center;height:22px;padding-inline:var(--alloy-space-3);border-radius:var(--alloy-radius-full);
+  border:1px solid var(--alloy-sys-outline-variant);font:var(--alloy-type-label-sm);letter-spacing:var(--alloy-tracking-wide);
+  color:var(--alloy-sys-on-surface-variant)}
+.topbar__actions{display:flex;align-items:center;gap:var(--alloy-space-2)}
+.topbar__actions a{color:var(--alloy-sys-on-surface-variant);text-decoration:none;display:inline-flex}
+
+main{max-width:1000px;margin:0 auto;padding:0 clamp(20px,5vw,56px) var(--alloy-space-12)}
+.prose{max-width:64ch}
+
+.section{padding-block:var(--alloy-space-12) 0;border-top:1px solid var(--alloy-sys-outline-variant);margin-top:var(--alloy-space-12)}
+.section:first-of-type{border-top:0;margin-top:0}
+.section__eyebrow{font-family:var(--alloy-font-mono);font-size:12px;color:var(--alloy-sys-primary);
+  letter-spacing:.04em;margin:0 0 var(--alloy-space-3)}
+.section__title{font:var(--alloy-type-headline-lg);letter-spacing:var(--alloy-tracking-tight);margin:0 0 var(--alloy-space-4);text-wrap:balance}
+.section__lead{font:var(--alloy-type-body-lg);color:var(--alloy-sys-on-surface-variant);margin:0 0 var(--alloy-space-8);max-width:64ch}
+
+/* hero */
+.hero{padding-block:clamp(56px,10vw,104px) 0}
+.hero__thesis{font:var(--alloy-type-display-md);letter-spacing:var(--alloy-tracking-tight);margin:0;max-width:20ch;text-wrap:balance;
+  animation:rise .6s var(--alloy-ease-standard) both}
+.hero__thesis em{font-style:normal;color:var(--alloy-sys-primary)}
+.hero__sub{font:var(--alloy-type-body-lg);color:var(--alloy-sys-on-surface-variant);margin:var(--alloy-space-6) 0 0;max-width:56ch;
+  animation:rise .6s .08s var(--alloy-ease-standard) both}
+.hero__meta{display:flex;flex-wrap:wrap;gap:var(--alloy-space-2) var(--alloy-space-5);margin-top:var(--alloy-space-7);
+  font:var(--alloy-type-label-md);letter-spacing:var(--alloy-tracking-wide);color:var(--alloy-sys-on-surface-variant);
+  animation:rise .6s .16s var(--alloy-ease-standard) both}
+.hero__meta span{display:inline-flex;align-items:center;gap:var(--alloy-space-2)}
+.hero__strip{display:flex;margin-top:var(--alloy-space-9);border-radius:var(--alloy-radius-lg);overflow:hidden;
+  box-shadow:var(--alloy-elevation-2);animation:rise .6s .24s var(--alloy-ease-standard) both}
+.hero__strip div{flex:1;height:88px;display:flex;align-items:flex-end;padding:var(--alloy-space-3);
+  font-family:var(--alloy-font-mono);font-size:10px}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* swatch grid */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--alloy-space-4)}
+.swatch{border:1px solid var(--alloy-sys-outline-variant);border-radius:var(--alloy-radius-md);overflow:hidden}
+.swatch__chip{height:72px}
+.swatch__meta{padding:var(--alloy-space-3);display:flex;flex-direction:column;gap:2px}
+.swatch__name{font:var(--alloy-type-label-sm);letter-spacing:var(--alloy-tracking-wide)}
+.swatch__hex{font-family:var(--alloy-font-mono);font-size:11px;color:var(--alloy-sys-on-surface-variant);font-variant-numeric:tabular-nums}
+
+/* type specimen */
+.type-row{display:grid;grid-template-columns:1fr auto;gap:var(--alloy-space-5);align-items:baseline;
+  padding-block:var(--alloy-space-4);border-bottom:1px solid var(--alloy-sys-outline-variant)}
+.type-row:last-child{border-bottom:0}
+.type-row__spec{font-family:var(--alloy-font-mono);font-size:11px;color:var(--alloy-sys-on-surface-variant);
+  white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+.type-row__sample{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* elevation ladder */
+.elevs{display:flex;flex-wrap:wrap;gap:var(--alloy-space-8)}
+.elev{width:132px}
+.elev__tile{height:88px;border-radius:var(--alloy-radius-lg);background:var(--alloy-sys-surface);
+  display:flex;align-items:center;justify-content:center;font:var(--alloy-type-label-md);
+  color:var(--alloy-sys-on-surface-variant)}
+.elev__cap{margin-top:var(--alloy-space-3);font-family:var(--alloy-font-mono);font-size:11px;color:var(--alloy-sys-on-surface-variant)}
+
+/* component gallery */
+.demo{margin-top:var(--alloy-space-7)}
+.demo + .demo{margin-top:var(--alloy-space-9)}
+.demo__label{font:var(--alloy-type-title-md);margin:0 0 var(--alloy-space-4);
+  display:flex;align-items:baseline;gap:var(--alloy-space-3)}
+.demo__label .mono{color:var(--alloy-sys-on-surface-variant)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--alloy-space-4)}
+.stack{display:flex;flex-direction:column;gap:var(--alloy-space-4);align-items:flex-start}
+.panel{background:var(--alloy-sys-surface-container-low);border:1px solid var(--alloy-sys-outline-variant);
+  border-radius:var(--alloy-radius-lg);padding:var(--alloy-space-7)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--alloy-space-5)}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--alloy-space-5)}
+.principle{border:1px solid var(--alloy-sys-outline-variant);border-radius:var(--alloy-radius-lg);
+  padding:var(--alloy-space-6);display:flex;flex-direction:column;gap:var(--alloy-space-3)}
+.principle h3{font:var(--alloy-type-title-lg);margin:0}
+.principle p{font:var(--alloy-type-body-md);color:var(--alloy-sys-on-surface-variant);margin:0}
+.principle--reserved{border-color:var(--alloy-sys-secondary);
+  background:color-mix(in srgb,var(--alloy-sys-secondary) 6%,transparent)}
+.principle--reserved h3{color:var(--alloy-sys-secondary)}
+[data-theme=dark] .principle--reserved h3,[data-alloy-theme=dark] .principle--reserved h3{color:var(--alloy-sys-on-secondary-container)}
+.principle .swatch__hex{color:inherit;opacity:.75}
+
+footer{max-width:1000px;margin:var(--alloy-space-12) auto 0;padding:var(--alloy-space-8) clamp(20px,5vw,56px) var(--alloy-space-11);
+  border-top:1px solid var(--alloy-sys-outline-variant);display:flex;flex-wrap:wrap;gap:var(--alloy-space-4);
+  justify-content:space-between;align-items:center;font:var(--alloy-type-body-sm);color:var(--alloy-sys-on-surface-variant)}
+footer a{color:var(--alloy-sys-link);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media (max-width:560px){
+  .type-row{grid-template-columns:1fr;gap:var(--alloy-space-1)}
+  .type-row__spec{text-align:left}
+  .hero__strip div{font-size:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__thesis,.hero__sub,.hero__meta,.hero__strip{animation:none}
+}
+</style>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="brand__mark" aria-hidden="true"></span>
+    <span class="brand__name">Alloy</span>
+    <span class="tag">v0.1 · React</span>
+  </div>
+  <div class="topbar__actions">
+    <button class="alloy-iconbtn alloy-focusable" id="theme-toggle" type="button" aria-label="Switch theme (system)">
+      <span class="alloy-state-layer" aria-hidden="true"></span>
+      <span class="alloy-iconbtn__icon"><span class="alloy-icon material-symbols-rounded" id="theme-icon" aria-hidden="true">brightness_auto</span></span>
+    </button>
+    <a href="https://github.com/design-elephant/Alloy-Design-System" aria-label="View on GitHub" target="_blank" rel="noopener noreferrer">
+      <span class="alloy-icon material-symbols-rounded" style="font-size:22px" aria-hidden="true">code</span>
+    </a>
+  </div>
+</div>
+
+<main>
+  <header class="hero">
+    <h1 class="hero__thesis">Material semantics, <em>portfolio warmth.</em></h1>
+    <p class="hero__sub">A from-scratch React design system: Material 3's color roles, state layers, elevation and motion — on an Orange / warm&nbsp;Grey / Deep&nbsp;Red palette built to be inviting and easy to scan.</p>
+    <div class="hero__meta">
+      <span><span class="alloy-icon material-symbols-rounded" style="font-size:16px" aria-hidden="true">deployed_code</span> 20 components</span>
+      <span><span class="alloy-icon material-symbols-rounded" style="font-size:16px" aria-hidden="true">palette</span> 156 tokens</span>
+      <span><span class="alloy-icon material-symbols-rounded" style="font-size:16px" aria-hidden="true">contrast</span> light + dark</span>
+      <span><span class="alloy-icon material-symbols-rounded" style="font-size:16px" aria-hidden="true">bolt</span> zero runtime deps</span>
+    </div>
+    <div class="hero__strip" id="hero-strip" aria-hidden="true"></div>
+  </header>
+
+  <section class="section" id="color">
+    <p class="section__eyebrow">--alloy-sys-*</p>
+    <h2 class="section__title">Color roles</h2>
+    <p class="section__lead">Every component reads a semantic role, never a raw value. Roles re-map per theme — toggle the theme in the header and every swatch below follows. Orange leads; deep red stays reserved; error is a separate red on purpose.</p>
+    <div class="swatches" id="swatches"></div>
+  </section>
+
+  <section class="section" id="type">
+    <p class="section__eyebrow">--alloy-type-*</p>
+    <h2 class="section__title">Type scale</h2>
+    <p class="section__lead">One family — <strong>Inter</strong>, via <span class="mono">--alloy-font-sans</span> — across fifteen roles. Tight tracking on display, comfortable leading on body for fast scanning. Sizes in px.</p>
+    <div id="type-scale"></div>
+  </section>
+
+  <section class="section" id="elevation">
+    <p class="section__eyebrow">--alloy-elevation-*</p>
+    <h2 class="section__title">Elevation</h2>
+    <p class="section__lead">Levels 1–2 cast a neutral warm-grey shadow for resting UI. Levels 3–5 shift to a <strong>warm orange-brown</strong> so menus, dialogs and popovers read as lifted from the brand, not floating in grey.</p>
+    <div class="elevs" id="elevs"></div>
+  </section>
+
+  <section class="section" id="components">
+    <p class="section__eyebrow">@alloy/react</p>
+    <h2 class="section__title">Components</h2>
+    <p class="section__lead">CSS-first: each component is plain classes over the token layer. Interactive states use the Material state-layer model, sitting behind content so hover and press never drop contrast.</p>
+
+    <div class="demo">
+      <p class="demo__label">Button <span class="mono">6 variants · 3 sizes · lg radius</span></p>
+      <div class="panel">
+        <div class="row">
+          <button class="alloy-btn alloy-btn--md alloy-btn--filled alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__label">Filled</span></button>
+          <button class="alloy-btn alloy-btn--md alloy-btn--tonal alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__label">Tonal</span></button>
+          <button class="alloy-btn alloy-btn--md alloy-btn--elevated alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__label">Elevated</span></button>
+          <button class="alloy-btn alloy-btn--md alloy-btn--outlined alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__label">Outlined</span></button>
+          <button class="alloy-btn alloy-btn--md alloy-btn--text alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__label">Text</span></button>
+          <button class="alloy-btn alloy-btn--md alloy-btn--danger alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__label">Delete</span></button>
+        </div>
+        <div class="row" style="margin-top:var(--alloy-space-5)">
+          <button class="alloy-btn alloy-btn--sm alloy-btn--filled alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__icon"><span class="alloy-icon material-symbols-rounded" style="font-size:16px">add</span></span><span class="alloy-btn__label">Small</span></button>
+          <button class="alloy-btn alloy-btn--md alloy-btn--filled alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__icon"><span class="alloy-icon material-symbols-rounded" style="font-size:18px">add</span></span><span class="alloy-btn__label">Medium</span></button>
+          <button class="alloy-btn alloy-btn--lg alloy-btn--filled alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__icon"><span class="alloy-icon material-symbols-rounded" style="font-size:20px">add</span></span><span class="alloy-btn__label">Large</span></button>
+          <button class="alloy-btn alloy-btn--md alloy-btn--filled" disabled><span class="alloy-btn__label">Disabled</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <p class="demo__label">Icon button <span class="mono">Material Symbols</span></p>
+      <div class="panel">
+        <div class="row">
+          <button class="alloy-iconbtn alloy-focusable" aria-label="Search"><span class="alloy-state-layer"></span><span class="alloy-iconbtn__icon"><span class="alloy-icon material-symbols-rounded">search</span></span></button>
+          <button class="alloy-iconbtn alloy-iconbtn--filled alloy-focusable" aria-label="Add"><span class="alloy-state-layer"></span><span class="alloy-iconbtn__icon"><span class="alloy-icon material-symbols-rounded">add</span></span></button>
+          <button class="alloy-iconbtn alloy-iconbtn--tonal alloy-focusable" aria-label="Add"><span class="alloy-state-layer"></span><span class="alloy-iconbtn__icon"><span class="alloy-icon material-symbols-rounded">add</span></span></button>
+          <button class="alloy-iconbtn alloy-iconbtn--outlined alloy-focusable" aria-label="Filter"><span class="alloy-state-layer"></span><span class="alloy-iconbtn__icon"><span class="alloy-icon material-symbols-rounded">tune</span></span></button>
+          <button class="alloy-iconbtn alloy-iconbtn--selected alloy-focusable" id="fav-btn" aria-pressed="true" aria-label="Favorite"><span class="alloy-state-layer"></span><span class="alloy-iconbtn__icon"><span class="alloy-icon material-symbols-rounded" style="font-variation-settings:'FILL' 1">favorite</span></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <p class="demo__label">Text field <span class="mono">search → 999px pill</span></p>
+      <div class="panel">
+        <div class="grid2">
+          <label class="alloy-field alloy-field--outlined">
+            <span class="alloy-field__label">Full name</span>
+            <span class="alloy-field__box"><input class="alloy-field__input" placeholder="Ada Lovelace" /></span>
+          </label>
+          <label class="alloy-field alloy-field--filled alloy-field--pill">
+            <span class="alloy-field__label">Search</span>
+            <span class="alloy-field__box"><span class="alloy-field__adornment"><span class="alloy-icon material-symbols-rounded" style="font-size:18px">search</span></span><input class="alloy-field__input" type="search" placeholder="Find anything" /></span>
+          </label>
+          <label class="alloy-field alloy-field--outlined alloy-field--error">
+            <span class="alloy-field__label">Email</span>
+            <span class="alloy-field__box"><input class="alloy-field__input" value="not-an-email" /></span>
+            <p class="alloy-field__message" role="alert">Enter a valid email address.</p>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <p class="demo__label">Selection <span class="mono">shared interaction model</span></p>
+      <div class="panel">
+        <div class="row" style="gap:var(--alloy-space-11);align-items:flex-start">
+          <div class="stack">
+            <label class="alloy-choice"><span class="alloy-choice__control alloy-choice__control--box"><input class="alloy-choice__input" type="checkbox" checked /><span class="alloy-state-layer"></span><svg class="alloy-choice__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="alloy-choice__check" d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Ship weekly digest</label>
+            <label class="alloy-choice"><span class="alloy-choice__control alloy-choice__control--box"><input class="alloy-choice__input" type="checkbox" /><span class="alloy-state-layer"></span><svg class="alloy-choice__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="alloy-choice__check" d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Also on weekends</label>
+          </div>
+          <div class="stack">
+            <label class="alloy-choice"><span class="alloy-choice__control alloy-choice__control--radio"><input class="alloy-choice__input" type="radio" name="plan" checked /><span class="alloy-state-layer"></span><span class="alloy-choice__dot"></span></span> Standard delivery</label>
+            <label class="alloy-choice"><span class="alloy-choice__control alloy-choice__control--radio"><input class="alloy-choice__input" type="radio" name="plan" /><span class="alloy-state-layer"></span><span class="alloy-choice__dot"></span></span> Priority delivery</label>
+          </div>
+          <div class="stack">
+            <label class="alloy-switch"><span class="alloy-switch__track"><input class="alloy-switch__input" type="checkbox" role="switch" /><span class="alloy-switch__thumb"></span></span> Airplane mode</label>
+            <label class="alloy-switch"><span class="alloy-switch__track"><input class="alloy-switch__input" type="checkbox" role="switch" checked /><span class="alloy-switch__thumb"></span></span> Wi-Fi</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <p class="demo__label">Chip &amp; Card</p>
+      <div class="panel">
+        <div class="row" style="margin-bottom:var(--alloy-space-6)">
+          <span class="alloy-chip alloy-chip--assist"><span class="alloy-chip__icon"><span class="alloy-icon material-symbols-rounded" style="font-size:16px">add</span></span><span class="alloy-chip__label">Add city</span></span>
+          <span class="alloy-chip alloy-chip--selected"><span class="alloy-chip__icon"><span class="alloy-icon material-symbols-rounded" style="font-size:16px">check</span></span><span class="alloy-chip__label">Design</span></span>
+          <span class="alloy-chip alloy-chip--input"><span class="alloy-chip__label">Portland</span></span>
+          <span class="alloy-chip alloy-chip--input"><span class="alloy-chip__label">Austin</span></span>
+        </div>
+        <div class="grid2">
+          <article class="alloy-card alloy-card--elevated">
+            <div class="alloy-card__media"><div class="alloy-aspect" style="--_ratio:16/9"><div style="background:linear-gradient(135deg,var(--alloy-ref-primary-50),var(--alloy-ref-neutral-24))"></div></div></div>
+            <div class="alloy-card__content">
+              <h3 style="font:var(--alloy-type-title-md);margin:0">Card with media</h3>
+              <p style="font:var(--alloy-type-body-sm);color:var(--alloy-sys-on-surface-variant);margin:0">Full-bleed 16:9 header, clipped to the card radius.</p>
+            </div>
+          </article>
+          <article class="alloy-card alloy-card--outlined">
+            <div class="alloy-card__content">
+              <h3 style="font:var(--alloy-type-title-md);margin:0">Outlined</h3>
+              <p style="font:var(--alloy-type-body-sm);color:var(--alloy-sys-on-surface-variant);margin:0">Sits on <span class="mono">surface</span> with a 1px outline-variant border.</p>
+              <hr class="alloy-divider" style="margin:var(--alloy-space-3) 0" />
+              <div class="row"><button class="alloy-btn alloy-btn--sm alloy-btn--text alloy-focusable"><span class="alloy-state-layer"></span><span class="alloy-btn__label">Action</span></button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <p class="demo__label">Tabs &amp; Breadcrumbs <span class="mono">roving tabindex</span></p>
+      <div class="panel">
+        <nav class="alloy-breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:var(--alloy-space-6)">
+          <ol class="alloy-breadcrumbs__list">
+            <li class="alloy-breadcrumbs__item"><a class="alloy-breadcrumbs__link" href="#">Home</a></li>
+            <li class="alloy-breadcrumbs__sep" aria-hidden="true"><span class="alloy-icon material-symbols-rounded" style="font-size:14px">chevron_right</span></li>
+            <li class="alloy-breadcrumbs__item"><a class="alloy-breadcrumbs__link" href="#">Projects</a></li>
+            <li class="alloy-breadcrumbs__sep" aria-hidden="true"><span class="alloy-icon material-symbols-rounded" style="font-size:14px">chevron_right</span></li>
+            <li class="alloy-breadcrumbs__item"><span class="alloy-breadcrumbs__current" aria-current="page">Rebranding a transit app</span></li>
+          </ol>
+        </nav>
+        <div class="alloy-tabs alloy-tabs--underline" id="demo-tabs">
+          <div class="alloy-tabs__list" role="tablist" aria-label="Project sections">
+            <button class="alloy-tabs__tab alloy-focusable" role="tab" id="t-overview" aria-controls="p-overview" aria-selected="true" tabindex="0"><span class="alloy-state-layer"></span><span class="alloy-tabs__tab-label">Overview</span></button>
+            <button class="alloy-tabs__tab alloy-focusable" role="tab" id="t-process" aria-controls="p-process" aria-selected="false" tabindex="-1"><span class="alloy-state-layer"></span><span class="alloy-tabs__tab-label">Process</span></button>
+            <button class="alloy-tabs__tab alloy-focusable" role="tab" id="t-outcomes" aria-controls="p-outcomes" aria-selected="false" tabindex="-1"><span class="alloy-state-layer"></span><span class="alloy-tabs__tab-label">Outcomes</span></button>
+          </div>
+          <div class="alloy-tabs__panel" role="tabpanel" id="p-overview" aria-labelledby="t-overview" tabindex="0" style="font:var(--alloy-type-body-md);color:var(--alloy-sys-on-surface-variant)">A six-week rebrand of a regional transit app — new wayfinding system, refreshed identity, and a component library.</div>
+          <div class="alloy-tabs__panel" role="tabpanel" id="p-process" aria-labelledby="t-process" tabindex="0" hidden style="font:var(--alloy-type-body-md);color:var(--alloy-sys-on-surface-variant)">Audit → journey mapping → concept sprints → usability testing → build.</div>
+          <div class="alloy-tabs__panel" role="tabpanel" id="p-outcomes" aria-labelledby="t-outcomes" tabindex="0" hidden style="font:var(--alloy-type-body-md);color:var(--alloy-sys-on-surface-variant)">Task success up 22%, support tickets about trip planning down 40%.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="principles">
+    <p class="section__eyebrow">the rules that keep it scannable</p>
+    <h2 class="section__title">Three colors, three jobs</h2>
+    <p class="section__lead">The palette stays legible because each hue has exactly one role and doesn't drift into the others'.</p>
+    <div class="principles">
+      <div class="principle">
+        <h3 style="color:var(--alloy-sys-primary)">Orange leads</h3>
+        <p>Primary actions, links, active states, focus rings — the accent everywhere. <span class="mono">primary/40</span> in light for AA on white; <span class="mono">primary/70</span> in dark.</p>
+      </div>
+      <div class="principle principle--reserved">
+        <h3>Deep red is reserved</h3>
+        <p>Serious secondary CTAs, emphasis text, small tags. Never a large surface, never next to orange at equal saturation. This card is the one place it appears.</p>
+        <span class="swatch__hex">--alloy-sys-secondary</span>
+      </div>
+      <div class="principle">
+        <h3 style="color:var(--alloy-sys-error)">Error red breaks the pattern</h3>
+        <p>A deliberately different hue and saturation from the brand deep-red, so validation and destructive actions read as <em>outside</em> the palette — on purpose.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Alloy Design System · <span class="mono">v0.1</span></span>
+  <span><a href="https://github.com/design-elephant/Alloy-Design-System">github.com/design-elephant/Alloy-Design-System</a></span>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+
+  /* ---- 3-state theme toggle: system → light → dark → system ---- */
+  var STATES = ["system", "light", "dark"];
+  var ICONS = { system: "brightness_auto", light: "light_mode", dark: "dark_mode" };
+  var idx = 0;
+  var btn = document.getElementById("theme-toggle");
+  var icon = document.getElementById("theme-icon");
+  function apply() {
+    var s = STATES[idx];
+    if (s === "system") {
+      root.removeAttribute("data-theme");
+      root.removeAttribute("data-alloy-theme");
+    } else {
+      root.setAttribute("data-theme", s);
+      root.setAttribute("data-alloy-theme", s);
+    }
+    icon.textContent = ICONS[s];
+    btn.setAttribute("aria-label", "Switch theme (" + s + ")");
+    paintDynamic();
+  }
+  btn.addEventListener("click", function () { idx = (idx + 1) % STATES.length; apply(); });
+
+  /* ---- resolve a token to its computed hex ---- */
+  var probe = document.createElement("span");
+  probe.style.cssText = "position:absolute;visibility:hidden;pointer-events:none";
+  document.body.appendChild(probe);
+  function resolve(varName) {
+    probe.style.color = "var(" + varName + ")";
+    var m = getComputedStyle(probe).color.match(/\d+(\.\d+)?/g);
+    if (!m) return "";
+    var hex = m.slice(0, 3).map(function (n) {
+      return ("0" + parseInt(n, 10).toString(16)).slice(-2);
+    }).join("");
+    return "#" + hex.toUpperCase();
+  }
+
+  /* ---- hero swatch strip ---- */
+  var HERO = [
+    ["--alloy-sys-primary", "on-primary"],
+    ["--alloy-sys-primary-container", "on-primary-container"],
+    ["--alloy-sys-secondary", "on-secondary"],
+    ["--alloy-sys-error", "on-error"],
+    ["--alloy-sys-surface-container-high", "on-surface"]
+  ];
+  var strip = document.getElementById("hero-strip");
+  HERO.forEach(function (pair) {
+    var d = document.createElement("div");
+    d.dataset.bg = pair[0];
+    d.dataset.fg = "--alloy-sys-" + pair[1];
+    strip.appendChild(d);
+  });
+
+  /* ---- color role swatches ---- */
+  var ROLES = [
+    "--alloy-sys-primary", "--alloy-sys-primary-container",
+    "--alloy-sys-secondary", "--alloy-sys-secondary-container",
+    "--alloy-sys-error", "--alloy-sys-error-container",
+    "--alloy-sys-surface", "--alloy-sys-surface-container-high",
+    "--alloy-sys-outline", "--alloy-sys-on-surface",
+    "--alloy-sys-on-surface-variant", "--alloy-sys-inverse-surface"
+  ];
+  var grid = document.getElementById("swatches");
+  ROLES.forEach(function (r) {
+    var el = document.createElement("div");
+    el.className = "swatch";
+    el.innerHTML =
+      '<div class="swatch__chip" data-bg="' + r + '"></div>' +
+      '<div class="swatch__meta"><span class="swatch__name">' + r.replace("--alloy-sys-", "") +
+      '</span><span class="swatch__hex" data-hex="' + r + '"></span></div>';
+    grid.appendChild(el);
+  });
+
+  /* ---- type scale ---- */
+  var TYPE = [
+    ["display-lg", "700 · 46/52", "Aa"], ["display-md", "700 · 37/44", "Aa"],
+    ["display-sm", "700 · 29/36", "Aa"], ["headline-lg", "700 · 24/32", "The quick brown fox"],
+    ["headline-md", "600 · 20/28", "The quick brown fox"], ["headline-sm", "600 · 18/26", "The quick brown fox"],
+    ["title-lg", "600 · 16/24", "The quick brown fox jumps over the lazy dog"],
+    ["title-md", "600 · 14/20", "The quick brown fox jumps over the lazy dog"],
+    ["body-lg", "400 · 16/26", "The quick brown fox jumps over the lazy dog"],
+    ["body-md", "400 · 14/22", "The quick brown fox jumps over the lazy dog"],
+    ["label-lg", "600 · 14/20 · +1%", "BUTTON LABEL"],
+    ["label-sm", "600 · 11/16 · +1%", "CAPTION LABEL"]
+  ];
+  var ts = document.getElementById("type-scale");
+  TYPE.forEach(function (t) {
+    var row = document.createElement("div");
+    row.className = "type-row";
+    var isLabel = t[0].indexOf("label") === 0;
+    row.innerHTML =
+      '<div class="type-row__sample" style="font:var(--alloy-type-' + t[0] + ');letter-spacing:' +
+      (t[0].indexOf("display") === 0 ? "var(--alloy-tracking-tight)" : isLabel ? "var(--alloy-tracking-wide)" : "0") +
+      '">' + t[2] + '</div>' +
+      '<div class="type-row__spec">--alloy-type-' + t[0] + '<br>' + t[1] + '</div>';
+    ts.appendChild(row);
+  });
+
+  /* ---- elevation ladder ---- */
+  var elevs = document.getElementById("elevs");
+  [1, 2, 3, 4, 5].forEach(function (n) {
+    var e = document.createElement("div");
+    e.className = "elev";
+    e.innerHTML =
+      '<div class="elev__tile" style="box-shadow:var(--alloy-elevation-' + n + ')">Level ' + n + '</div>' +
+      '<div class="elev__cap">--alloy-elevation-' + n + (n >= 3 ? ' · warm' : '') + '</div>';
+    elevs.appendChild(e);
+  });
+
+  /* ---- repaint token-driven bits after theme change ---- */
+  function paintDynamic() {
+    document.querySelectorAll("[data-bg]").forEach(function (el) {
+      el.style.background = "var(" + el.dataset.bg + ")";
+      if (el.dataset.fg) el.style.color = "var(" + el.dataset.fg + ")";
+    });
+    document.querySelectorAll("[data-hex]").forEach(function (el) {
+      el.textContent = resolve(el.dataset.hex);
+    });
+    document.querySelectorAll("#hero-strip div").forEach(function (el) {
+      el.textContent = resolve(el.dataset.bg);
+    });
+  }
+  paintDynamic();
+
+  /* ---- favorite toggle ---- */
+  var fav = document.getElementById("fav-btn");
+  fav.addEventListener("click", function () {
+    var on = fav.getAttribute("aria-pressed") === "true";
+    fav.setAttribute("aria-pressed", String(!on));
+    fav.classList.toggle("alloy-iconbtn--selected", !on);
+    var g = fav.querySelector(".alloy-icon");
+    g.style.fontVariationSettings = on ? "'FILL' 0" : "'FILL' 1";
+  });
+
+  /* ---- tabs: roving tabindex + panel switching ---- */
+  var tabsWrap = document.getElementById("demo-tabs");
+  var tabs = Array.prototype.slice.call(tabsWrap.querySelectorAll('[role="tab"]'));
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var sel = t === tab;
+      t.setAttribute("aria-selected", String(sel));
+      t.tabIndex = sel ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !sel;
+    });
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { selectTab(tab); });
+    tab.addEventListener("keydown", function (e) {
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var next = tabs[(i + d + tabs.length) % tabs.length];
+      next.focus();
+      selectTab(next);
+    });
+  });
+
+  apply();
+})();
+</script>
