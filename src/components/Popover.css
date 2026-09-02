@@ -1,0 +1,61 @@
+.alloy-popover-layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--alloy-z-tooltip);
+  background: transparent;
+  pointer-events: none;
+}
+
+.alloy-popover {
+  position: fixed;
+  pointer-events: auto;
+  min-width: 180px;
+  max-width: min(92vw, 360px);
+  padding: var(--alloy-space-4);
+  background-color: var(--alloy-sys-surface-container-high);
+  color: var(--alloy-sys-on-surface);
+  border: 1px solid var(--alloy-sys-outline-variant);
+  border-radius: var(--alloy-radius-lg);
+  box-shadow: var(--alloy-elevation-3);
+  font: var(--alloy-type-body-md);
+  animation: alloy-popover-in var(--alloy-duration-2) var(--alloy-ease-standard);
+}
+
+.alloy-popover--arrow .alloy-popover__arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--alloy-sys-surface-container-high);
+  border: 1px solid var(--alloy-sys-outline-variant);
+  transform: rotate(45deg);
+}
+.alloy-popover--bottom .alloy-popover__arrow,
+.alloy-popover--bottom-start .alloy-popover__arrow,
+.alloy-popover--bottom-end .alloy-popover__arrow {
+  top: -6px;
+  border-right: none;
+  border-bottom: none;
+}
+.alloy-popover--top .alloy-popover__arrow,
+.alloy-popover--top-start .alloy-popover__arrow,
+.alloy-popover--top-end .alloy-popover__arrow {
+  bottom: -6px;
+  border-left: none;
+  border-top: none;
+}
+.alloy-popover--bottom .alloy-popover__arrow,
+.alloy-popover--top .alloy-popover__arrow { left: calc(50% - 5px); }
+.alloy-popover--bottom-start .alloy-popover__arrow,
+.alloy-popover--top-start .alloy-popover__arrow { left: 16px; }
+.alloy-popover--bottom-end .alloy-popover__arrow,
+.alloy-popover--top-end .alloy-popover__arrow { right: 16px; }
+.alloy-popover--left .alloy-popover__arrow { right: -6px; top: calc(50% - 5px); border-left: none; border-bottom: none; }
+.alloy-popover--right .alloy-popover__arrow { left: -6px; top: calc(50% - 5px); border-right: none; border-top: none; }
+
+@keyframes alloy-popover-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alloy-popover { animation-duration: 0.01ms; }
+}

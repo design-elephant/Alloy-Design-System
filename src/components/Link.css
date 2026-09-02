@@ -1,0 +1,56 @@
+.alloy-link {
+  --_underline: var(--alloy-sys-link);
+  color: var(--alloy-sys-link);
+  display: inline;
+  align-items: center;
+  gap: var(--alloy-space-2);
+  border-radius: var(--alloy-radius-xs);
+  text-decoration-color: var(--_underline);
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1.5px;
+  cursor: pointer;
+  transition: color var(--alloy-duration-1) var(--alloy-ease-standard);
+}
+.alloy-link:visited { color: var(--alloy-sys-link-visited); }
+.alloy-link:hover { color: var(--alloy-ref-primary-30); }
+[data-alloy-theme="dark"] .alloy-link:hover { color: var(--alloy-ref-primary-80); }
+
+.alloy-link__label { text-decoration: inherit; }
+.alloy-link__icon,
+.alloy-link__ext {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.14em;
+  text-decoration: none;
+}
+.alloy-link__ext { width: 0.85em; height: 0.85em; margin-left: 0.15em; opacity: 0.8; }
+
+/* variants */
+.alloy-link--inline { text-decoration-line: underline; }
+.alloy-link--standalone {
+  display: inline-flex;
+  text-decoration-line: none;
+  font-weight: var(--alloy-weight-semibold);
+}
+.alloy-link--standalone:hover { text-decoration-line: underline; }
+.alloy-link--subtle {
+  color: inherit;
+  text-decoration-line: none;
+  --_underline: currentColor;
+}
+.alloy-link--subtle:visited { color: inherit; }
+.alloy-link--subtle:hover { color: var(--alloy-sys-on-surface); text-decoration-line: underline; }
+.alloy-link--quiet {
+  color: inherit;
+  text-decoration-line: none;
+}
+.alloy-link--quiet:visited { color: inherit; }
+.alloy-link--quiet:hover { color: var(--alloy-sys-link); }
+
+/* Bare anchors inside Alloy content get the inline treatment by default */
+.alloy-root a:not([class*="alloy-"]) {
+  color: var(--alloy-sys-link);
+  text-underline-offset: 0.15em;
+}
+.alloy-root a:not([class*="alloy-"]):visited { color: var(--alloy-sys-link-visited); }

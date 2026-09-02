@@ -1,0 +1,61 @@
+.alloy-iconbtn {
+  --_state: var(--alloy-sys-on-surface-variant);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--alloy-radius-md);
+  background-color: transparent;
+  color: var(--alloy-sys-on-surface-variant);
+  cursor: pointer;
+  transition:
+    background-color var(--alloy-duration-2) var(--alloy-ease-standard),
+    color var(--alloy-duration-2) var(--alloy-ease-standard),
+    border-color var(--alloy-duration-2) var(--alloy-ease-standard);
+}
+
+.alloy-iconbtn--sm { width: 32px; height: 32px; }
+.alloy-iconbtn--md { width: 40px; height: 40px; }
+.alloy-iconbtn--lg { width: 48px; height: 48px; border-radius: var(--alloy-radius-lg); }
+
+.alloy-iconbtn__icon { position: relative; z-index: 1; display: inline-flex; width: 20px; height: 20px; }
+.alloy-iconbtn--sm .alloy-iconbtn__icon { width: 18px; height: 18px; }
+.alloy-iconbtn--lg .alloy-iconbtn__icon { width: 24px; height: 24px; }
+.alloy-iconbtn__icon > svg { width: 100%; height: 100%; }
+
+.alloy-iconbtn:hover .alloy-state-layer { opacity: var(--alloy-state-hover); }
+.alloy-iconbtn:active .alloy-state-layer { opacity: var(--alloy-state-pressed); }
+.alloy-iconbtn:focus-visible .alloy-state-layer { opacity: var(--alloy-state-focus); }
+
+.alloy-iconbtn--filled {
+  background-color: var(--alloy-sys-primary);
+  color: var(--alloy-sys-on-primary);
+  --_state: var(--alloy-sys-on-primary);
+}
+.alloy-iconbtn--tonal {
+  background-color: var(--alloy-sys-primary-container);
+  color: var(--alloy-sys-on-primary-container);
+  --_state: var(--alloy-sys-on-primary-container);
+}
+.alloy-iconbtn--outlined {
+  border-color: var(--alloy-sys-outline);
+  color: var(--alloy-sys-on-surface-variant);
+}
+
+.alloy-iconbtn--selected.alloy-iconbtn--standard { color: var(--alloy-sys-primary); --_state: var(--alloy-sys-primary); }
+.alloy-iconbtn--selected.alloy-iconbtn--outlined {
+  background-color: var(--alloy-sys-inverse-surface);
+  color: var(--alloy-sys-inverse-on-surface);
+  border-color: transparent;
+}
+
+.alloy-iconbtn:disabled {
+  cursor: not-allowed;
+  color: color-mix(in srgb, var(--alloy-sys-on-surface) 38%, transparent);
+}
+.alloy-iconbtn--filled:disabled,
+.alloy-iconbtn--tonal:disabled {
+  background-color: color-mix(in srgb, var(--alloy-sys-on-surface) 12%, transparent);
+}
+.alloy-iconbtn:disabled .alloy-state-layer { display: none; }

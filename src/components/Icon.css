@@ -1,0 +1,23 @@
+.alloy-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  line-height: 1;
+  overflow: hidden;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* Font-family names Google's stylesheet defines for each cut */
+.material-symbols-rounded { font-family: "Material Symbols Rounded", sans-serif; }
+.material-symbols-outlined { font-family: "Material Symbols Outlined", sans-serif; }
+.material-symbols-sharp { font-family: "Material Symbols Sharp", sans-serif; }

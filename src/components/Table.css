@@ -1,0 +1,76 @@
+.alloy-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--alloy-sys-outline-variant);
+  border-radius: var(--alloy-radius-lg);
+  background-color: var(--alloy-sys-surface);
+}
+.alloy-table-wrap:focus-visible {
+  outline: var(--alloy-focus-ring-width) solid var(--alloy-sys-primary);
+  outline-offset: 2px;
+}
+
+.alloy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--alloy-type-body-md);
+  color: var(--alloy-sys-on-surface);
+}
+
+.alloy-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--alloy-space-4) var(--alloy-space-5);
+  font: var(--alloy-type-title-sm);
+  letter-spacing: var(--alloy-tracking-wide);
+  color: var(--alloy-sys-on-surface-variant);
+}
+
+.alloy-table th,
+.alloy-table td {
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--alloy-sys-outline-variant);
+}
+.alloy-table thead th {
+  font: var(--alloy-type-label-md);
+  letter-spacing: var(--alloy-tracking-wide);
+  color: var(--alloy-sys-on-surface-variant);
+  background-color: var(--alloy-sys-surface-container-low);
+  border-bottom-color: var(--alloy-sys-outline);
+  white-space: nowrap;
+}
+.alloy-table tbody tr:last-child td { border-bottom: none; }
+
+/* numeric columns: add data-align="end" to th/td */
+.alloy-table [data-align="end"] { text-align: right; font-variant-numeric: tabular-nums; }
+.alloy-table [data-align="center"] { text-align: center; }
+
+/* density */
+.alloy-table--comfortable th,
+.alloy-table--comfortable td { padding: var(--alloy-space-4) var(--alloy-space-5); }
+.alloy-table--compact th,
+.alloy-table--compact td { padding: var(--alloy-space-2) var(--alloy-space-4); }
+
+/* striping */
+.alloy-table--striped tbody tr:nth-child(even) td {
+  background-color: color-mix(in srgb, var(--alloy-sys-on-surface) 3%, transparent);
+}
+
+/* hover */
+.alloy-table--hoverable tbody tr:hover td {
+  background-color: color-mix(in srgb, var(--alloy-sys-on-surface) 5%, transparent);
+}
+
+/* column borders */
+.alloy-table--col-borders th:not(:last-child),
+.alloy-table--col-borders td:not(:last-child) {
+  border-right: 1px solid var(--alloy-sys-outline-variant);
+}
+
+/* sticky header */
+.alloy-table--sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

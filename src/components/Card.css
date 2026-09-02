@@ -1,0 +1,55 @@
+.alloy-card {
+  --_state: var(--alloy-sys-on-surface);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--alloy-radius-lg);
+  background-color: var(--alloy-sys-surface-container-low);
+  color: var(--alloy-sys-on-surface);
+  overflow: hidden;
+  transition:
+    box-shadow var(--alloy-duration-2) var(--alloy-ease-standard),
+    border-color var(--alloy-duration-2) var(--alloy-ease-standard);
+}
+
+/* Full-bleed media */
+.alloy-card__media {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+.alloy-card__media > * { display: block; width: 100%; border-radius: 0; }
+.alloy-card__media img { display: block; width: 100%; }
+.alloy-card--has-media .alloy-card__content { flex: 1; }
+/* Content sits above the state layer so hover/press tint never lowers its contrast */
+.alloy-card__content {
+  position: relative;
+  z-index: 1;
+  padding: var(--_pad, var(--alloy-space-5));
+  display: flex;
+  flex-direction: column;
+  gap: var(--alloy-space-2);
+}
+
+.alloy-card--elevated { box-shadow: var(--alloy-elevation-1); border: 1px solid transparent; }
+.alloy-card--filled {
+  background-color: var(--alloy-sys-surface-container-high);
+  border: 1px solid transparent;
+}
+.alloy-card--outlined {
+  background-color: var(--alloy-sys-surface);
+  border: 1px solid var(--alloy-sys-outline-variant);
+}
+
+.alloy-card--interactive { cursor: pointer; }
+
+/* Hover/press: a perceptible 1.5px ring (>=3:1 vs surface) in addition to the
+   elevation change and the subtle background tint — never shadow alone. */
+.alloy-card--interactive:hover {
+  box-shadow: var(--alloy-elevation-2), inset 0 0 0 1.5px var(--alloy-sys-outline);
+}
+.alloy-card--interactive:active {
+  box-shadow: var(--alloy-elevation-1), inset 0 0 0 1.5px var(--alloy-sys-on-surface-variant);
+}
+.alloy-card--interactive:hover .alloy-state-layer { opacity: var(--alloy-state-hover); }
+.alloy-card--interactive:active .alloy-state-layer { opacity: var(--alloy-state-pressed); }

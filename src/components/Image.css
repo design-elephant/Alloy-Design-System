@@ -1,0 +1,61 @@
+.alloy-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background-color: var(--alloy-sys-surface-container-high);
+}
+.alloy-image--radius-none { border-radius: 0; }
+.alloy-image--radius-sm { border-radius: var(--alloy-radius-sm); }
+.alloy-image--radius-md { border-radius: var(--alloy-radius-md); }
+.alloy-image--radius-lg { border-radius: var(--alloy-radius-lg); }
+.alloy-image--radius-xl { border-radius: var(--alloy-radius-xl); }
+.alloy-image--radius-2xl { border-radius: var(--alloy-radius-2xl); }
+
+.alloy-image__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity var(--alloy-duration-4) var(--alloy-ease-standard);
+}
+.alloy-image__img[data-state="loaded"] { opacity: 1; }
+.alloy-image__img[data-state="error"] { opacity: 0; }
+
+/* shimmer while loading */
+.alloy-image--loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in srgb, var(--alloy-sys-on-surface) 6%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: alloy-shimmer 1.4s var(--alloy-ease-standard) infinite;
+}
+@keyframes alloy-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.alloy-image__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--alloy-sys-on-surface-variant);
+  background-color: var(--alloy-sys-surface-container-high);
+}
+
+.alloy-image-figure { margin: 0; display: flex; flex-direction: column; gap: var(--alloy-space-3); }
+.alloy-image__caption {
+  font: var(--alloy-type-body-sm);
+  color: var(--alloy-sys-on-surface-variant);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alloy-image--loading::after { animation: none; }
+}

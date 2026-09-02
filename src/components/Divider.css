@@ -1,0 +1,8 @@
+.alloy-divider {
+  flex: none;
+  background-color: var(--alloy-sys-outline-variant);
+  border: 0;
+}
+.alloy-divider--horizontal { width: 100%; height: 1px; }
+.alloy-divider--vertical { width: 1px; align-self: stretch; min-height: 1em; }
+.alloy-divider--horizontal.alloy-divider--inset { width: auto; margin-left: var(--alloy-space-7); }

@@ -1,0 +1,29 @@
+.alloy-container {
+  width: 100%;
+  max-width: var(--_max, var(--alloy-container-max));
+  margin-inline: auto;
+  padding-inline: var(--_gutter, var(--alloy-container-pad));
+}
+
+.alloy-grid {
+  display: grid;
+  grid-template-columns: var(--_template, repeat(12, minmax(0, 1fr)));
+  row-gap: var(--_row-gap, var(--alloy-space-6));
+  column-gap: var(--_col-gap, var(--alloy-space-6));
+}
+
+.alloy-grid-item {
+  grid-column: var(--_start, auto) / var(--_span, span 1);
+  min-width: 0;
+}
+/* when --_start is unset the shorthand above still resolves to "auto / span N" */
+
+/* Collapsible grids fold to one column on narrow viewports */
+@media (max-width: 600px) {
+  .alloy-grid--collapsible {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .alloy-grid--collapsible > .alloy-grid-item {
+    grid-column: 1 / -1;
+  }
+}

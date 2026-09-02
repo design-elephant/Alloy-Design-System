@@ -1,0 +1,74 @@
+.alloy-dialog-layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--alloy-z-modal);
+  display: flex;
+  justify-content: center;
+  padding: var(--alloy-space-6);
+  background: transparent;
+  overflow-y: auto;
+}
+.alloy-dialog-layer--center { align-items: center; }
+.alloy-dialog-layer--top { align-items: flex-start; padding-top: 10vh; }
+
+.alloy-dialog__scrim {
+  position: fixed;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--alloy-sys-scrim) 55%, transparent);
+  animation: alloy-fade-in var(--alloy-duration-3) var(--alloy-ease-standard);
+}
+
+.alloy-dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--alloy-space-4);
+  width: 100%;
+  max-height: 100%;
+  padding: var(--alloy-space-7);
+  background-color: var(--alloy-sys-surface-container-high);
+  color: var(--alloy-sys-on-surface);
+  border-radius: var(--alloy-radius-xl);
+  box-shadow: var(--alloy-elevation-4);
+  animation: alloy-dialog-in var(--alloy-duration-4) var(--alloy-ease-emphasized);
+}
+.alloy-dialog--sm { max-width: 400px; }
+.alloy-dialog--md { max-width: 540px; }
+.alloy-dialog--lg { max-width: 760px; }
+
+.alloy-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--alloy-space-4);
+}
+.alloy-dialog__title { margin: 0; font: var(--alloy-type-headline-sm); color: var(--alloy-sys-on-surface); }
+.alloy-dialog__close { margin: calc(var(--alloy-space-2) * -1); flex: none; }
+.alloy-dialog__description { margin: 0; font: var(--alloy-type-body-md); color: var(--alloy-sys-on-surface-variant); }
+.alloy-dialog__body { overflow-y: auto; font: var(--alloy-type-body-md); }
+.alloy-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--alloy-space-3);
+  padding-top: var(--alloy-space-2);
+}
+
+.alloy-dialog-layer.is-closing .alloy-dialog__scrim { animation: alloy-fade-in var(--alloy-duration-2) var(--alloy-ease-standard) reverse; }
+.alloy-dialog-layer.is-closing .alloy-dialog { animation: alloy-dialog-out var(--alloy-duration-2) var(--alloy-ease-accelerate) forwards; }
+
+@keyframes alloy-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes alloy-dialog-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes alloy-dialog-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(4px) scale(0.99); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alloy-dialog,
+  .alloy-dialog__scrim,
+  .alloy-dialog-layer.is-closing .alloy-dialog { animation-duration: 0.01ms; }
+}

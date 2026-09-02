@@ -1,0 +1,17 @@
+.alloy-aspect {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--_ratio, 16 / 9);
+  overflow: hidden;
+  border-radius: inherit;
+}
+.alloy-aspect > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.alloy-aspect > img,
+.alloy-aspect > video {
+  object-fit: cover;
+}

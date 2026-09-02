@@ -1,0 +1,78 @@
+/**
+ * Alloy — base layer
+ * Import once at the app root (or import "@alloy/react/styles.css").
+ */
+@import "../tokens/tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.alloy-root,
+[data-alloy-theme] {
+  font-family: var(--alloy-font-sans);
+  color: var(--alloy-sys-on-background);
+  background-color: var(--alloy-sys-background);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Shared focus ring — keyboard only */
+.alloy-focusable {
+  outline: none;
+}
+.alloy-focusable:focus-visible {
+  outline: var(--alloy-focus-ring-width) solid var(--alloy-sys-primary);
+  outline-offset: var(--alloy-focus-ring-offset);
+}
+
+/* State layer — an absolutely-positioned overlay on an interactive surface.
+   Component CSS sets `--_state: <color>` and toggles opacity via :hover / :active.
+   It sits at z-index 0 so it NEVER paints over foreground content: any element
+   that carries visible content inside an interactive surface must establish a
+   position (`position: relative`) so it stacks above the layer and keeps its
+   contrast on hover/press. */
+.alloy-state-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-color: var(--_state, currentColor);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--alloy-duration-2) var(--alloy-ease-standard);
+}
+
+/* Typography utilities */
+.alloy-display-lg { font: var(--alloy-type-display-lg); letter-spacing: var(--alloy-tracking-tight); }
+.alloy-display-md { font: var(--alloy-type-display-md); letter-spacing: var(--alloy-tracking-tight); }
+.alloy-display-sm { font: var(--alloy-type-display-sm); letter-spacing: var(--alloy-tracking-tight); }
+.alloy-headline-lg { font: var(--alloy-type-headline-lg); }
+.alloy-headline-md { font: var(--alloy-type-headline-md); }
+.alloy-headline-sm { font: var(--alloy-type-headline-sm); }
+.alloy-title-lg { font: var(--alloy-type-title-lg); }
+.alloy-title-md { font: var(--alloy-type-title-md); }
+.alloy-title-sm { font: var(--alloy-type-title-sm); letter-spacing: var(--alloy-tracking-wide); }
+.alloy-body-lg { font: var(--alloy-type-body-lg); }
+.alloy-body-md { font: var(--alloy-type-body-md); }
+.alloy-body-sm { font: var(--alloy-type-body-sm); }
+.alloy-label-lg { font: var(--alloy-type-label-lg); letter-spacing: var(--alloy-tracking-wide); }
+.alloy-label-md { font: var(--alloy-type-label-md); letter-spacing: var(--alloy-tracking-wide); }
+.alloy-label-sm { font: var(--alloy-type-label-sm); letter-spacing: var(--alloy-tracking-wide); }
+
+.alloy-text { margin: 0; color: var(--alloy-sys-on-surface); }
+.alloy-text--muted { color: var(--alloy-sys-on-surface-variant); }
+.alloy-text--primary { color: var(--alloy-sys-primary); }
+.alloy-text--error { color: var(--alloy-sys-error); }
+.alloy-text--inverse { color: var(--alloy-sys-inverse-on-surface); }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,74 @@
+.alloy-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--alloy-space-4);
+  cursor: pointer;
+  font: var(--alloy-type-body-md);
+  color: var(--alloy-sys-on-surface);
+}
+.alloy-switch--label-start { flex-direction: row-reverse; }
+.alloy-switch--disabled { cursor: not-allowed; opacity: 0.38; }
+
+.alloy-switch__track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  flex: none;
+  border-radius: var(--alloy-radius-full);
+  border: 2px solid var(--alloy-sys-outline);
+  background-color: var(--alloy-sys-surface-container-highest);
+  transition:
+    background-color var(--alloy-duration-2) var(--alloy-ease-standard),
+    border-color var(--alloy-duration-2) var(--alloy-ease-standard);
+}
+
+.alloy-switch__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.alloy-switch__thumb {
+  position: absolute;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--alloy-radius-full);
+  background-color: var(--alloy-sys-outline);
+  transition:
+    transform var(--alloy-duration-3) var(--alloy-ease-emphasized),
+    width var(--alloy-duration-2) var(--alloy-ease-standard),
+    height var(--alloy-duration-2) var(--alloy-ease-standard),
+    background-color var(--alloy-duration-2) var(--alloy-ease-standard);
+}
+.alloy-switch__thumb .alloy-state-layer {
+  width: 40px;
+  height: 40px;
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--alloy-radius-full);
+  --_state: var(--alloy-sys-primary);
+}
+
+.alloy-switch:hover .alloy-state-layer { opacity: var(--alloy-state-hover); }
+.alloy-switch__input:focus-visible ~ .alloy-switch__thumb .alloy-state-layer { opacity: var(--alloy-state-focus); }
+
+/* Checked */
+.alloy-switch__input:checked ~ .alloy-switch__thumb {
+  transform: translateX(20px);
+  width: 18px;
+  height: 18px;
+  left: 1px;
+  background-color: var(--alloy-sys-on-primary);
+}
+.alloy-switch__track:has(.alloy-switch__input:checked) {
+  background-color: var(--alloy-sys-primary);
+  border-color: var(--alloy-sys-primary);
+}
+.alloy-switch__track:active .alloy-switch__thumb { width: 20px; height: 20px; }

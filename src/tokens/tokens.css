@@ -1,0 +1,404 @@
+/**
+ * Alloy — design tokens
+ * ---------------------------------------------------------------------------
+ * Palette:  Orange / warm Grey / Deep Red
+ *   primary   → Orange   — structure + primary actions, does most accent work
+ *   secondary → Deep Red — brick/oxblood, reserved & grounded (never mid-tone
+ *               bright, never adjacent to primary at equal saturation)
+ *   error     → true Red — a different hue/sat than secondary so validation and
+ *               destructive actions never read as "on brand"
+ *   neutral   → warm-leaning grey + white — carries the scannability
+ *   success / warning → FUNCTIONAL status only, not brand accents
+ *
+ * Layer 1 (--alloy-ref-*)  reference palette  (raw tonal values, never used directly in components)
+ * Layer 2 (--alloy-sys-*)  system roles       (what components consume; themable per mode)
+ * Layer 3 (--alloy-*)      scales             (spacing, radius, type, motion — mode independent)
+ *
+ * Layer 3 is UNCHANGED across palette revisions — only the color layers move.
+ */
+
+:root {
+  /* ---- Layer 1: reference tonal palettes ------------------------------- */
+
+  /* Orange (primary) */
+  --alloy-ref-primary-0: #000000;
+  --alloy-ref-primary-10: #3d1400;
+  --alloy-ref-primary-20: #5c1f00;
+  --alloy-ref-primary-30: #8a3a0a;
+  --alloy-ref-primary-40: #c24a0e;
+  --alloy-ref-primary-50: #e5651b;
+  --alloy-ref-primary-60: #ff7d3d;
+  --alloy-ref-primary-70: #ff9b63;
+  --alloy-ref-primary-80: #ffc199;
+  --alloy-ref-primary-90: #ffdcc4;
+  --alloy-ref-primary-95: #ffeee1;
+  --alloy-ref-primary-99: #fffaf7;
+  --alloy-ref-primary-100: #ffffff;
+
+  /* Deep Red (secondary — brick/oxblood, deliberately grounded).
+     ┌─────────────────────────────────────────────────────────────────────┐
+     │ RESERVED ROLE. Secondary is NOT a general accent. Allowed uses:      │
+     │  • "serious" secondary CTAs sitting next to a primary orange one     │
+     │  • emphasis text, small tag / badge / chip treatments               │
+     │ NOT allowed: large surface fills, or competing head-on with orange   │
+     │ at equal saturation inside the same component. If it starts spreading│
+     │ the system is drifting off what made it scannable.                   │
+     └─────────────────────────────────────────────────────────────────────┘ */
+  --alloy-ref-secondary-0: #000000;
+  --alloy-ref-secondary-10: #2b0605;
+  --alloy-ref-secondary-20: #450a08;
+  --alloy-ref-secondary-30: #6b120f;
+  --alloy-ref-secondary-40: #8a1d18;
+  --alloy-ref-secondary-50: #a8251d;
+  --alloy-ref-secondary-60: #c23328;
+  --alloy-ref-secondary-70: #d9584d;
+  --alloy-ref-secondary-80: #f0b3ac;
+  --alloy-ref-secondary-90: #f6d9d6;
+  --alloy-ref-secondary-95: #fbebe9;
+
+  /* True Red (error — distinct hue/sat from secondary deep-red) */
+  --alloy-ref-error-10: #410002;
+  --alloy-ref-error-20: #690005;
+  --alloy-ref-error-30: #93000a;
+  --alloy-ref-error-40: #ba1a1a;
+  --alloy-ref-error-80: #ffb4ab;
+  --alloy-ref-error-90: #ffdad6;
+
+  /* Neutral — warm-leaning grey + white (carries scannability) */
+  --alloy-ref-neutral-0: #000000;
+  --alloy-ref-neutral-4: #0e0c0b;
+  --alloy-ref-neutral-6: #131110;
+  --alloy-ref-neutral-10: #1a1816;
+  --alloy-ref-neutral-12: #1e1b19;
+  --alloy-ref-neutral-17: #262320;
+  --alloy-ref-neutral-20: #2e2b28;
+  --alloy-ref-neutral-22: #322f2b;
+  --alloy-ref-neutral-24: #35322e;
+  --alloy-ref-neutral-30: #47433f;
+  --alloy-ref-neutral-40: #615c57;
+  --alloy-ref-neutral-50: #7c7670;
+  --alloy-ref-neutral-60: #97918a;
+  --alloy-ref-neutral-70: #b4aea7;
+  --alloy-ref-neutral-80: #d1ccc5;
+  --alloy-ref-neutral-87: #e2ded8;
+  --alloy-ref-neutral-90: #e8e4df;
+  --alloy-ref-neutral-92: #edeae5;
+  --alloy-ref-neutral-94: #f1eee9;
+  --alloy-ref-neutral-95: #f4f1ed;
+  --alloy-ref-neutral-96: #f7f4f0;
+  --alloy-ref-neutral-98: #faf8f5;
+  --alloy-ref-neutral-99: #fcfbfa;
+  --alloy-ref-neutral-100: #ffffff;
+
+  /* Neutral variant — slightly warmer/darker than neutral at the same tone,
+     for outlines and borders */
+  --alloy-ref-neutral-variant-20: #302a24;
+  --alloy-ref-neutral-variant-30: #4f473f;
+  --alloy-ref-neutral-variant-40: #6a6157;
+  --alloy-ref-neutral-variant-50: #857c72;
+  --alloy-ref-neutral-variant-60: #a0968b;
+  --alloy-ref-neutral-variant-70: #bbb1a5;
+  --alloy-ref-neutral-variant-80: #d8cfc3;
+  --alloy-ref-neutral-variant-90: #efe7db;
+
+  /* Functional status — NOT brand accents. Kept visually distinct from the
+     orange/red brand so "success" and "warning" never read as primary. */
+  --alloy-ref-success-40: #1e7d4e;
+  --alloy-ref-success-80: #8fd9b0;
+  --alloy-ref-success-90: #baffd7;
+  --alloy-ref-warning-40: #8a5a00;
+  --alloy-ref-warning-80: #ffc46b;
+  --alloy-ref-warning-90: #ffdfb0;
+
+  /* ---- Layer 3: scales (mode independent — UNCHANGED) ---------------- */
+
+  /* Spacing — 4px grid */
+  --alloy-space-0: 0;
+  --alloy-space-1: 2px;
+  --alloy-space-2: 4px;
+  --alloy-space-3: 8px;
+  --alloy-space-4: 12px;
+  --alloy-space-5: 16px;
+  --alloy-space-6: 20px;
+  --alloy-space-7: 24px;
+  --alloy-space-8: 32px;
+  --alloy-space-9: 40px;
+  --alloy-space-10: 48px;
+  --alloy-space-11: 64px;
+  --alloy-space-12: 80px;
+
+  /* Shape — generous, friendly rounding */
+  --alloy-radius-none: 0;
+  --alloy-radius-xs: 3px;
+  --alloy-radius-sm: 6px;
+  --alloy-radius-md: 10px;
+  --alloy-radius-lg: 14px;
+  --alloy-radius-xl: 20px;
+  --alloy-radius-2xl: 28px;
+  --alloy-radius-full: 999px;
+
+  /* Typography — one family, functional scale, comfortable leading for scanning. */
+  --alloy-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --alloy-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+
+  --alloy-weight-regular: 400;
+  --alloy-weight-medium: 500;
+  --alloy-weight-semibold: 600;
+  --alloy-weight-bold: 700;
+
+  /* role: display */
+  --alloy-type-display-lg: 700 46px/52px var(--alloy-font-sans);
+  --alloy-type-display-md: 700 37px/44px var(--alloy-font-sans);
+  --alloy-type-display-sm: 700 29px/36px var(--alloy-font-sans);
+  /* role: headline */
+  --alloy-type-headline-lg: 700 24px/32px var(--alloy-font-sans);
+  --alloy-type-headline-md: 600 20px/28px var(--alloy-font-sans);
+  --alloy-type-headline-sm: 600 18px/26px var(--alloy-font-sans);
+  /* role: title */
+  --alloy-type-title-lg: 600 16px/24px var(--alloy-font-sans);
+  --alloy-type-title-md: 600 14px/20px var(--alloy-font-sans);
+  --alloy-type-title-sm: 600 12px/16px var(--alloy-font-sans);
+  /* role: body */
+  --alloy-type-body-lg: 400 16px/26px var(--alloy-font-sans);
+  --alloy-type-body-md: 400 14px/22px var(--alloy-font-sans);
+  --alloy-type-body-sm: 400 12px/18px var(--alloy-font-sans);
+  /* role: label (UI text — buttons, chips, captions) */
+  --alloy-type-label-lg: 600 14px/20px var(--alloy-font-sans);
+  --alloy-type-label-md: 600 12px/16px var(--alloy-font-sans);
+  --alloy-type-label-sm: 600 11px/16px var(--alloy-font-sans);
+
+  --alloy-tracking-tight: -0.015em;
+  --alloy-tracking-normal: 0;
+  --alloy-tracking-wide: 0.01em;
+
+  /* Motion — Material 3 easing, brisk durations */
+  --alloy-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --alloy-ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --alloy-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --alloy-ease-emphasized: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --alloy-duration-1: 80ms;
+  --alloy-duration-2: 120ms;
+  --alloy-duration-3: 180ms;
+  --alloy-duration-4: 260ms;
+  --alloy-duration-5: 340ms;
+
+  /* State-layer opacities (Material interaction model) */
+  --alloy-state-hover: 0.08;
+  --alloy-state-focus: 0.1;
+  --alloy-state-pressed: 0.1;
+  --alloy-state-dragged: 0.16;
+  --alloy-state-disabled-content: 0.38;
+  --alloy-state-disabled-container: 0.12;
+
+  /* Z-index */
+  --alloy-z-base: 0;
+  --alloy-z-sticky: 100;
+  --alloy-z-drawer: 200;
+  --alloy-z-modal: 300;
+  --alloy-z-toast: 400;
+  --alloy-z-tooltip: 500;
+
+  /* Focus ring */
+  --alloy-focus-ring-width: 2px;
+  --alloy-focus-ring-offset: 2px;
+
+  /* Aspect ratios — for media slots, image containers, embeds */
+  --alloy-aspect-square: 1 / 1;
+  --alloy-aspect-video: 16 / 9;
+  --alloy-aspect-photo: 4 / 3;
+  --alloy-aspect-portrait: 3 / 4;
+  --alloy-aspect-wide: 21 / 9;
+  --alloy-aspect-golden: 1.618 / 1;
+
+  /* Layout grid */
+  --alloy-grid-columns: 12;
+  --alloy-grid-gutter: var(--alloy-space-6);
+  --alloy-container-max: 1200px;
+  --alloy-container-pad: var(--alloy-space-7);
+}
+
+/* ---- Layer 2: system roles — LIGHT (default) ----------------------- */
+:root,
+[data-alloy-theme="light"] {
+  color-scheme: light;
+
+  --alloy-sys-primary: var(--alloy-ref-primary-50);
+  --alloy-sys-on-primary: #ffffff;
+  --alloy-sys-primary-container: var(--alloy-ref-primary-90);
+  --alloy-sys-on-primary-container: var(--alloy-ref-primary-10);
+
+  /* Link text needs AA against surface at normal weight, so it runs one step
+     darker than --alloy-sys-primary (which is tuned for filled surfaces). */
+  --alloy-sys-link: var(--alloy-ref-primary-40);
+  --alloy-sys-link-visited: var(--alloy-ref-secondary-40);
+
+  --alloy-sys-secondary: var(--alloy-ref-secondary-30);
+  --alloy-sys-on-secondary: #ffffff;
+  --alloy-sys-secondary-container: var(--alloy-ref-secondary-90);
+  --alloy-sys-on-secondary-container: var(--alloy-ref-secondary-10);
+
+  --alloy-sys-error: var(--alloy-ref-error-40);
+  --alloy-sys-on-error: #ffffff;
+  --alloy-sys-error-container: var(--alloy-ref-error-90);
+  --alloy-sys-on-error-container: var(--alloy-ref-error-10);
+
+  --alloy-sys-success: var(--alloy-ref-success-40);
+  --alloy-sys-on-success: #ffffff;
+  --alloy-sys-warning: var(--alloy-ref-warning-40);
+  --alloy-sys-on-warning: #ffffff;
+
+  --alloy-sys-background: var(--alloy-ref-neutral-99);
+  --alloy-sys-on-background: var(--alloy-ref-neutral-10);
+  --alloy-sys-surface: var(--alloy-ref-neutral-99);
+  --alloy-sys-on-surface: var(--alloy-ref-neutral-10);
+  --alloy-sys-on-surface-variant: var(--alloy-ref-neutral-30);
+
+  --alloy-sys-surface-dim: var(--alloy-ref-neutral-87);
+  --alloy-sys-surface-bright: var(--alloy-ref-neutral-100);
+  --alloy-sys-surface-container-lowest: var(--alloy-ref-neutral-100);
+  --alloy-sys-surface-container-low: var(--alloy-ref-neutral-96);
+  --alloy-sys-surface-container: var(--alloy-ref-neutral-95);
+  --alloy-sys-surface-container-high: var(--alloy-ref-neutral-90);
+  --alloy-sys-surface-container-highest: var(--alloy-ref-neutral-87);
+
+  --alloy-sys-outline: var(--alloy-ref-neutral-variant-50);
+  --alloy-sys-outline-variant: var(--alloy-ref-neutral-variant-80);
+
+  --alloy-sys-inverse-surface: var(--alloy-ref-neutral-20);
+  --alloy-sys-inverse-on-surface: var(--alloy-ref-neutral-95);
+  --alloy-sys-inverse-primary: var(--alloy-ref-primary-70);
+
+  --alloy-sys-shadow: var(--alloy-ref-neutral-0);
+  --alloy-sys-scrim: var(--alloy-ref-neutral-0);
+
+  /* Elevation — soft & low-alpha. Levels 1–2 (resting UI: inputs, cards) stay
+     neutral warm-grey; levels 3–5 (lifted UI: menus, dialogs, popovers) cast a
+     warm orange-brown shadow so raised surfaces read as "coming from the brand". */
+  --alloy-elevation-0: none;
+  --alloy-elevation-1: 0 1px 2px rgba(26, 24, 22, 0.08), 0 1px 3px rgba(26, 24, 22, 0.06);
+  --alloy-elevation-2: 0 2px 4px rgba(26, 24, 22, 0.08), 0 4px 10px rgba(26, 24, 22, 0.08);
+  --alloy-elevation-3: 0 4px 8px rgba(138, 58, 10, 0.14), 0 10px 24px rgba(138, 58, 10, 0.12);
+  --alloy-elevation-4: 0 8px 16px rgba(138, 58, 10, 0.16), 0 18px 40px rgba(138, 58, 10, 0.14);
+  --alloy-elevation-5: 0 12px 24px rgba(138, 58, 10, 0.18), 0 28px 56px rgba(122, 44, 4, 0.2);
+}
+
+/* ---- Layer 2: system roles — DARK -------------------------------- */
+[data-alloy-theme="dark"] {
+  color-scheme: dark;
+
+  --alloy-sys-primary: var(--alloy-ref-primary-70);
+  --alloy-sys-on-primary: var(--alloy-ref-primary-20);
+  --alloy-sys-primary-container: var(--alloy-ref-primary-30);
+  --alloy-sys-on-primary-container: var(--alloy-ref-primary-90);
+
+  --alloy-sys-link: var(--alloy-ref-primary-70);
+  --alloy-sys-link-visited: var(--alloy-ref-secondary-70);
+
+  --alloy-sys-secondary: var(--alloy-ref-secondary-60);
+  --alloy-sys-on-secondary: var(--alloy-ref-secondary-20);
+  --alloy-sys-secondary-container: var(--alloy-ref-secondary-30);
+  --alloy-sys-on-secondary-container: var(--alloy-ref-secondary-90);
+
+  --alloy-sys-error: var(--alloy-ref-error-80);
+  --alloy-sys-on-error: var(--alloy-ref-error-20);
+  --alloy-sys-error-container: var(--alloy-ref-error-30);
+  --alloy-sys-on-error-container: var(--alloy-ref-error-90);
+
+  --alloy-sys-success: var(--alloy-ref-success-80);
+  --alloy-sys-on-success: #04210f;
+  --alloy-sys-warning: var(--alloy-ref-warning-80);
+  --alloy-sys-on-warning: #3f2a00;
+
+  --alloy-sys-background: var(--alloy-ref-neutral-6);
+  --alloy-sys-on-background: var(--alloy-ref-neutral-90);
+  --alloy-sys-surface: var(--alloy-ref-neutral-10);
+  --alloy-sys-on-surface: var(--alloy-ref-neutral-90);
+  --alloy-sys-on-surface-variant: var(--alloy-ref-neutral-80);
+
+  --alloy-sys-surface-dim: var(--alloy-ref-neutral-6);
+  --alloy-sys-surface-bright: var(--alloy-ref-neutral-24);
+  --alloy-sys-surface-container-lowest: var(--alloy-ref-neutral-4);
+  --alloy-sys-surface-container-low: var(--alloy-ref-neutral-12);
+  --alloy-sys-surface-container: #22201d;
+  --alloy-sys-surface-container-high: var(--alloy-ref-neutral-20);
+  --alloy-sys-surface-container-highest: var(--alloy-ref-neutral-24);
+
+  --alloy-sys-outline: var(--alloy-ref-neutral-variant-50);
+  --alloy-sys-outline-variant: var(--alloy-ref-neutral-variant-30);
+
+  --alloy-sys-inverse-surface: var(--alloy-ref-neutral-90);
+  --alloy-sys-inverse-on-surface: var(--alloy-ref-neutral-20);
+  --alloy-sys-inverse-primary: var(--alloy-ref-primary-40);
+
+  --alloy-sys-shadow: #000000;
+  --alloy-sys-scrim: #000000;
+
+  --alloy-elevation-0: none;
+  --alloy-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --alloy-elevation-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.36);
+  --alloy-elevation-3: 0 4px 8px rgba(0, 0, 0, 0.44), 0 10px 24px rgba(60, 20, 0, 0.5);
+  --alloy-elevation-4: 0 8px 16px rgba(0, 0, 0, 0.48), 0 18px 40px rgba(60, 20, 0, 0.52);
+  --alloy-elevation-5: 0 12px 24px rgba(0, 0, 0, 0.52), 0 28px 56px rgba(60, 20, 0, 0.55);
+}
+
+/* Honour OS preference when no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-alloy-theme="light"]) {
+    color-scheme: dark;
+
+    --alloy-sys-primary: var(--alloy-ref-primary-70);
+    --alloy-sys-on-primary: var(--alloy-ref-primary-20);
+    --alloy-sys-primary-container: var(--alloy-ref-primary-30);
+    --alloy-sys-on-primary-container: var(--alloy-ref-primary-90);
+
+    --alloy-sys-link: var(--alloy-ref-primary-70);
+    --alloy-sys-link-visited: var(--alloy-ref-secondary-70);
+
+    --alloy-sys-secondary: var(--alloy-ref-secondary-60);
+    --alloy-sys-on-secondary: var(--alloy-ref-secondary-20);
+    --alloy-sys-secondary-container: var(--alloy-ref-secondary-30);
+    --alloy-sys-on-secondary-container: var(--alloy-ref-secondary-90);
+
+    --alloy-sys-error: var(--alloy-ref-error-80);
+    --alloy-sys-on-error: var(--alloy-ref-error-20);
+    --alloy-sys-error-container: var(--alloy-ref-error-30);
+    --alloy-sys-on-error-container: var(--alloy-ref-error-90);
+
+    --alloy-sys-success: var(--alloy-ref-success-80);
+    --alloy-sys-on-success: #04210f;
+    --alloy-sys-warning: var(--alloy-ref-warning-80);
+    --alloy-sys-on-warning: #3f2a00;
+
+    --alloy-sys-background: var(--alloy-ref-neutral-6);
+    --alloy-sys-on-background: var(--alloy-ref-neutral-90);
+    --alloy-sys-surface: var(--alloy-ref-neutral-10);
+    --alloy-sys-on-surface: var(--alloy-ref-neutral-90);
+    --alloy-sys-on-surface-variant: var(--alloy-ref-neutral-80);
+
+    --alloy-sys-surface-dim: var(--alloy-ref-neutral-6);
+    --alloy-sys-surface-bright: var(--alloy-ref-neutral-24);
+    --alloy-sys-surface-container-lowest: var(--alloy-ref-neutral-4);
+    --alloy-sys-surface-container-low: var(--alloy-ref-neutral-12);
+    --alloy-sys-surface-container: #22201d;
+    --alloy-sys-surface-container-high: var(--alloy-ref-neutral-20);
+    --alloy-sys-surface-container-highest: var(--alloy-ref-neutral-24);
+
+    --alloy-sys-outline: var(--alloy-ref-neutral-variant-50);
+    --alloy-sys-outline-variant: var(--alloy-ref-neutral-variant-30);
+
+    --alloy-sys-inverse-surface: var(--alloy-ref-neutral-90);
+    --alloy-sys-inverse-on-surface: var(--alloy-ref-neutral-20);
+    --alloy-sys-inverse-primary: var(--alloy-ref-primary-40);
+
+    --alloy-sys-shadow: #000000;
+    --alloy-sys-scrim: #000000;
+
+    --alloy-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --alloy-elevation-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.36);
+    --alloy-elevation-3: 0 4px 8px rgba(0, 0, 0, 0.44), 0 10px 24px rgba(60, 20, 0, 0.5);
+    --alloy-elevation-4: 0 8px 16px rgba(0, 0, 0, 0.48), 0 18px 40px rgba(60, 20, 0, 0.52);
+    --alloy-elevation-5: 0 12px 24px rgba(0, 0, 0, 0.52), 0 28px 56px rgba(60, 20, 0, 0.55);
+  }
+}

@@ -1,0 +1,105 @@
+.alloy-field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--alloy-space-2);
+  min-width: 240px;
+}
+.alloy-field--full { display: flex; width: 100%; min-width: 0; }
+
+.alloy-field__label {
+  font: var(--alloy-type-label-md);
+  letter-spacing: var(--alloy-tracking-wide);
+  color: var(--alloy-sys-on-surface-variant);
+}
+.alloy-field__required { color: var(--alloy-sys-error); }
+
+.alloy-field__box {
+  display: flex;
+  align-items: center;
+  gap: var(--alloy-space-3);
+  height: 44px;
+  padding-inline: var(--alloy-space-4);
+  border-radius: var(--alloy-radius-md);
+  transition:
+    border-color var(--alloy-duration-2) var(--alloy-ease-standard),
+    background-color var(--alloy-duration-2) var(--alloy-ease-standard),
+    box-shadow var(--alloy-duration-2) var(--alloy-ease-standard);
+}
+
+.alloy-field--outlined .alloy-field__box {
+  border: 1px solid var(--alloy-sys-outline);
+  background-color: transparent;
+}
+.alloy-field--filled .alloy-field__box {
+  border: 1px solid transparent;
+  border-bottom-color: var(--alloy-sys-outline);
+  border-radius: var(--alloy-radius-sm) var(--alloy-radius-sm) 0 0;
+  background-color: var(--alloy-sys-surface-container-high);
+}
+
+/* Shape */
+.alloy-field--pill .alloy-field__box {
+  border-radius: var(--alloy-radius-full);
+  padding-inline: var(--alloy-space-5);
+}
+.alloy-field--pill.alloy-field--filled .alloy-field__box {
+  border-radius: var(--alloy-radius-full);
+  border-bottom-color: transparent;
+}
+
+/* Hover (not while focused or disabled) */
+.alloy-field:not(.alloy-field--disabled) .alloy-field__box:hover {
+  border-color: var(--alloy-sys-on-surface-variant);
+}
+.alloy-field--filled:not(.alloy-field--disabled) .alloy-field__box:hover {
+  background-color: var(--alloy-sys-surface-container-highest);
+  border-bottom-color: var(--alloy-sys-on-surface-variant);
+}
+
+/* Focus — shown for pointer and keyboard, as users expect for text inputs */
+.alloy-field__box:focus-within {
+  border-color: var(--alloy-sys-primary);
+  box-shadow: inset 0 0 0 1px var(--alloy-sys-primary);
+}
+.alloy-field--filled .alloy-field__box:focus-within {
+  background-color: var(--alloy-sys-surface-container-high);
+  box-shadow: inset 0 -2px 0 0 var(--alloy-sys-primary);
+}
+
+.alloy-field__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--alloy-sys-on-surface);
+  font: var(--alloy-type-body-md);
+}
+.alloy-field__input::placeholder { color: var(--alloy-sys-on-surface-variant); opacity: 0.7; }
+
+.alloy-field__adornment {
+  display: inline-flex;
+  align-items: center;
+  color: var(--alloy-sys-on-surface-variant);
+  width: 20px;
+  height: 20px;
+}
+.alloy-field__adornment > svg { width: 100%; height: 100%; }
+
+.alloy-field__message {
+  margin: 0;
+  font: var(--alloy-type-body-sm);
+  color: var(--alloy-sys-on-surface-variant);
+}
+
+/* Error */
+.alloy-field--error .alloy-field__label,
+.alloy-field--error .alloy-field__message,
+.alloy-field--error .alloy-field__adornment { color: var(--alloy-sys-error); }
+.alloy-field--error .alloy-field__box { border-color: var(--alloy-sys-error); }
+.alloy-field--error .alloy-field__box:focus-within {
+  box-shadow: inset 0 0 0 1px var(--alloy-sys-error);
+}
+
+/* Disabled */
+.alloy-field--disabled { opacity: 0.5; pointer-events: none; }
