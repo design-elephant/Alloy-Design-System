@@ -40,6 +40,21 @@ function App() {
 `ThemeProvider` also imports the base stylesheet, so `styles.css` is optional if
 you always render inside a provider.
 
+### Fonts
+
+Alloy uses **Inter** for text and **Material Symbols** for icons. Load both at
+the document head (the demo loads the "Rounded" cut of Material Symbols):
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..200&display=block" rel="stylesheet" />
+```
+
+Swap Inter via `--alloy-font-sans`. Icons: `<Icon name="search" />` — any
+[Material Symbols](https://fonts.google.com/icons) name, with `size` / `weight` /
+`fill` / `grade` axes. Internal structural glyphs (chevron, close, external-link)
+are inline SVG so components render even without the icon font loaded.
+
 ---
 
 ## Design direction
@@ -129,7 +144,8 @@ import { color, space, radius, elevation } from "@alloy/react";
 | -------------- | --------- |
 | `Button`       | `variant` filled·tonal·outlined·text·elevated·danger · `size` sm·md·lg · `startIcon` · `endIcon` · `loading` · `fullWidth` |
 | `IconButton`   | `variant` standard·filled·tonal·outlined · `size` · `selected` (toggle) · `aria-label` (required) |
-| `TextField`    | `variant` outlined·filled · `label` · `helperText` · `error` · `startAdornment` · `endAdornment` · `fullWidth` |
+| `TextField`    | `variant` outlined·filled · `shape` rounded·**pill** (999px; auto for `type="search"`) · `label` · `helperText` · `error` · `startAdornment` · `endAdornment` · `fullWidth` |
+| `Icon`         | `name` (Material Symbols) · `size` · `weight` · `fill` · `grade` · `variant` rounded·outlined·sharp · `color` |
 | `Checkbox`     | `label` · `indeterminate` + all native `<input>` props |
 | `Radio`        | `label` + native props |
 | `Switch`       | `label` · `labelPosition` start·end |
