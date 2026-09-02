@@ -224,13 +224,13 @@
 [data-alloy-theme="light"] {
   color-scheme: light;
 
-  --alloy-sys-primary: var(--alloy-ref-primary-50);
+  /* primary-40 (#C24A0E) — white text passes WCAG AA (4.91:1). primary-50 was
+     brighter but only 3.38:1 on white; kept in the ramp for large-text / chrome. */
+  --alloy-sys-primary: var(--alloy-ref-primary-40);
   --alloy-sys-on-primary: #ffffff;
   --alloy-sys-primary-container: var(--alloy-ref-primary-90);
   --alloy-sys-on-primary-container: var(--alloy-ref-primary-10);
 
-  /* Link text needs AA against surface at normal weight, so it runs one step
-     darker than --alloy-sys-primary (which is tuned for filled surfaces). */
   --alloy-sys-link: var(--alloy-ref-primary-40);
   --alloy-sys-link-visited: var(--alloy-ref-secondary-40);
 

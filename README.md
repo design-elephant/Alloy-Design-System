@@ -72,11 +72,9 @@ are inline SVG so components render even without the icon font loaded.
 
 ### Accessibility notes on the current palette
 
-- **`--alloy-sys-primary` is `primary-50` (#E5651B).** White text on it is **3.38:1** —
-  below WCAG AA for normal text (ok for large text / non-text UI). Filled orange
-  buttons and orange link text are the affected cases. One-line fix if you want AA
-  everywhere: point `--alloy-sys-primary` at `--alloy-ref-primary-40` (#C24A0E →
-  4.91:1). Dark mode is fine (6.1:1).
+- **`--alloy-sys-primary` (light) is `primary-40` (#C24A0E)** — white text is **4.91:1**,
+  passes WCAG AA. `primary-50` (#E5651B, 3.38:1) stays in the ramp for large-text /
+  chrome accents only. Dark mode uses `primary-70` (6.1:1).
 - **Dark-mode `--alloy-sys-secondary` is `secondary-60`** (kept deliberately grounded).
   Solid deep-red elements in dark mode land at ~2.9:1 with their on-color — fine for
   the intended uses (emphasis text sitting on a surface, tags, borders) but not for
