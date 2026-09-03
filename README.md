@@ -4,14 +4,14 @@ A React design system built from scratch, tuned for creative-portfolio work.
 **Material 3 semantics** — color roles, state layers, elevation, motion — with
 **hot accents on a neutral grey field**:
 
-- **Orange** (`primary`, `#FF540D`) leads — buttons, links, active states, focus rings,
+- **Pink** (`primary`, `#E80C7A`) leads — buttons, links, active states, focus rings,
   the first stop of every gradient. `primary/40` for text (AA); the brand hue for chrome.
-- **Pink** (`secondary`, `#E80C7A`) is a full peer accent — alternate CTAs, highlights,
-  the pink end of the gradient.
+- **Orange** (`secondary`, `#FF540D`) is a full peer accent — alternate CTAs, highlights,
+  the orange end of the gradient.
 - **Pure red** (`error`, `#FF0000`) is the one hot hue kept *out* of the decorative
   palette, so validation and destructive actions read as breaking the pattern.
 - **True grey + white** (`neutral`) carries all the structure.
-- **Gradients** (`--alloy-gradient-*`) — orange↔pink, for depth on hero / brand
+- **Gradients** (`--alloy-gradient-*`) — pink↔orange, for depth on hero / brand
   surfaces. Depth is a gradient job now, not a tinted-shadow job.
 
 Generous rounding, brisk motion. Structured like a standard system.
@@ -64,8 +64,8 @@ are inline SVG so components render even without the icon font loaded.
 
 | Concern       | From Material 3                              | How Alloy tunes it                            |
 | ------------- | ------------------------------------------- | --------------------------------------------- |
-| Color         | Semantic role tokens, tonal palettes, light/dark | Orange `primary` + Pink `secondary` as **peer** accents; pure-red `error` reserved (never decorative); true-grey neutrals. `success`/`warning` functional-only |
-| Depth         | Surface tint / elevation tint               | **Gradient tokens** — orange↔pink — do the brand depth; the container ramp and shadows stay pure neutral grey |
+| Color         | Semantic role tokens, tonal palettes, light/dark | Pink `primary` + Orange `secondary` as **peer** accents; pure-red `error` reserved (never decorative); true-grey neutrals. `success`/`warning` functional-only |
+| Depth         | Surface tint / elevation tint               | **Gradient tokens** — pink↔orange — do the brand depth; the container ramp and shadows stay pure neutral grey |
 | Shape         | Shape scale (none → full)                   | Generous: `sm` 6 · `md` 10 · `lg` 14 · `xl` 20. Buttons round to `lg`, chips are full pills |
 | Elevation     | 6 levels, shadow model                      | Clean neutral-grey shadows, 5 levels; cards default to level 1 |
 | Typography    | display / headline / title / body / label roles | One family (Inter); comfortable body leading (14/22, 16/26); bold display & headline |
@@ -76,10 +76,10 @@ are inline SVG so components render even without the icon font loaded.
 ### Gradients
 
 ```
---alloy-gradient-warm          orange → pink   (--alloy-sys-gradient)
---alloy-gradient-warm-reverse  pink → orange   (--alloy-sys-gradient-reverse)
+--alloy-gradient-warm          pink → orange   (--alloy-sys-gradient)
+--alloy-gradient-warm-reverse  orange → pink   (--alloy-sys-gradient-reverse)
 --alloy-gradient-warm-soft     lighter, calmer
---alloy-gradient-warm-vivid    orange · red · pink
+--alloy-gradient-warm-vivid    pink · red · orange
 --alloy-gradient-depth         ambient two-corner wash for large backgrounds
 ```
 
@@ -89,11 +89,11 @@ highest-emphasis button.
 
 ### Accessibility notes on the current palette
 
-- **`--alloy-sys-primary` (light) is `primary/40` (#B74107)** — white text **5.6:1**, AA ✓.
-  The brand orange `#FF540D` (3.2:1 on white) is `primary-bright`, for large-text / chrome only.
-- **`--alloy-sys-secondary` (light) is `secondary/40` (#B80063)** — white text **6.5:1**, AA ✓.
-  Brand pink `#E80C7A` is `secondary-bright`.
-- **Gradient buttons** carry white on a `#FF540D → #E80C7A` field (3.2–4.4:1) — a
+- **`--alloy-sys-primary` (light) is `primary/40` (#B80063)** — white text **6.5:1**, AA ✓.
+  The brand pink `#E80C7A` (~4.4:1 on white) is `primary-bright`, for large-text / chrome only.
+- **`--alloy-sys-secondary` (light) is `secondary/40` (#B74107)** — white text **5.6:1**, AA ✓.
+  Brand orange `#FF540D` (3.2:1 on white) is `secondary-bright`.
+- **Gradient buttons** carry white on a `#E80C7A → #FF540D` field (~3.2–4.4:1) — a
   large-text / hero-CTA treatment, below AA for small labels. Use `filled` when the
   label is small.
 - Everything else — neutrals, `error`, `link`, `outline`, all filled buttons in both
@@ -201,9 +201,9 @@ All interactive components:
 
 ### Elevation
 
-Levels 1–2 are neutral warm-grey (resting UI: inputs, cards). Levels 3–5 cast a
-warm **orange-brown** shadow (lifted UI: menus, dialogs, popovers) so raised
-surfaces read as coming from the brand.
+Clean neutral-grey shadows, five levels (resting UI like inputs and cards default
+to level 1; menus, dialogs and popovers ride levels 3–5). Brand depth is the
+gradient tokens' job now, not a tinted-shadow job.
 
 ---
 

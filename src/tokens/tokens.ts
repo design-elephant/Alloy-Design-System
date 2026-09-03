@@ -41,11 +41,11 @@ export const color = {
   scrim: cssVar("sys-scrim"),
 } as const;
 
-/** Brand gradients — orange ↔ pink, for depth on hero / brand surfaces. */
+/** Brand gradients — pink ↔ orange, for depth on hero / brand surfaces. */
 export const gradient = {
-  /** semantic: orange → pink */
-  brand: cssVar("sys-gradient"),
   /** semantic: pink → orange */
+  brand: cssVar("sys-gradient"),
+  /** semantic: orange → pink */
   brandReverse: cssVar("sys-gradient-reverse"),
   onBrand: cssVar("sys-on-gradient"),
   warm: cssVar("gradient-warm"),

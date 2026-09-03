@@ -83,10 +83,10 @@ const SWATCHES = [
 ];
 
 const GRADIENTS: [string, string][] = [
-  ["--alloy-gradient-warm", "orange → pink"],
-  ["--alloy-gradient-warm-reverse", "pink → orange"],
+  ["--alloy-gradient-warm", "pink → orange"],
+  ["--alloy-gradient-warm-reverse", "orange → pink"],
   ["--alloy-gradient-warm-soft", "soft"],
-  ["--alloy-gradient-warm-vivid", "vivid (orange · red · pink)"],
+  ["--alloy-gradient-warm-vivid", "vivid (pink · red · orange)"],
 ];
 
 // role → [weight, size/line-height, tracking] — must match tokens.css
@@ -117,7 +117,7 @@ const BUTTON_SPEC: [string, string, string, string, string][] = [
 
 const BUTTON_COLOR_SPEC: [string, string, string][] = [
   ["filled", "--alloy-sys-primary", "--alloy-sys-on-primary"],
-  ["gradient", "--alloy-sys-gradient (orange → pink)", "--alloy-sys-on-gradient"],
+  ["gradient", "--alloy-sys-gradient (pink → orange)", "--alloy-sys-on-gradient"],
   ["tonal", "--alloy-sys-primary-container", "--alloy-sys-on-primary-container"],
   ["elevated", "--alloy-sys-surface-container-low + elev-1", "--alloy-sys-primary"],
   ["outlined", "transparent · 1px --alloy-sys-outline", "--alloy-sys-primary"],
@@ -153,9 +153,9 @@ function Showcase() {
             <span className="alloy-gradient-text">neutral field.</span>
           </Text>
           <Text role="body-lg" color="muted">
-            Material 3's color roles, state layers, elevation and motion — on an
-            orange lead and a pink peer accent over true grey. Depth comes from
-            orange↔pink gradients, not tinted shadows.
+            Material 3's color roles, state layers, elevation and motion — on a
+            pink lead and an orange peer accent over true grey. Depth comes from
+            pink↔orange gradients, not tinted shadows.
           </Text>
           <div className="demo-row" style={{ marginTop: "8px" }}>
             <Button variant="gradient">Get started</Button>
@@ -167,7 +167,7 @@ function Showcase() {
                 color: "var(--alloy-sys-on-secondary)",
               }}
             >
-              Pink accent
+              Orange accent
             </Button>
             <Button variant="tonal">Tonal</Button>
             <Button variant="text">Learn more</Button>
@@ -190,7 +190,7 @@ function Showcase() {
 
         <Section
           title="Gradients"
-          desc="Orange ↔ pink, for depth on hero sections, brand marks and high-emphasis surfaces. --alloy-gradient-depth is an ambient wash for large backgrounds."
+          desc="Pink ↔ orange, for depth on hero sections, brand marks and high-emphasis surfaces. --alloy-gradient-depth is an ambient wash for large backgrounds."
         >
           <div className="demo-swatches">
             {GRADIENTS.map(([v, label]) => (
@@ -210,7 +210,7 @@ function Showcase() {
           >
             <Text role="title-md">--alloy-gradient-depth</Text>
             <Text role="body-sm" color="muted">
-              Two low-alpha radial washes (orange from the top-left, pink from the
+              Two low-alpha radial washes (pink from the top-left, orange from the
               bottom-right) — sits under content to add depth without a hard edge.
             </Text>
           </div>

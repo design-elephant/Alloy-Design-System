@@ -2,13 +2,14 @@
  * Alloy — design tokens
  * ---------------------------------------------------------------------------
  * Palette:  Hot accents on a neutral grey field
- *   primary   → Orange  (#FF540D)  — the lead accent; buttons, links, focus
- *   secondary → Pink     (#E80C7A) — a full peer accent; alt CTAs, highlights,
+ *   primary   → Pink     (#E80C7A) — the lead accent; buttons, links, focus,
+ *               the first stop of every brand gradient
+ *   secondary → Orange   (#FF540D) — a full peer accent; alt CTAs, highlights,
  *               the second stop of every brand gradient
  *   error     → pure Red (#FF0000) — the one hot hue kept OUT of the decorative
  *               palette, so destructive / invalid states always break the pattern
  *   neutral   → true grey + white — carries all the structure and scanning
- *   gradients → orange↔pink, for depth on hero / elevated / brand surfaces
+ *   gradients → pink↔orange, for depth on hero / elevated / brand surfaces
  *   success / warning → FUNCTIONAL status only, never decorative
  *
  * Layer 1 (--alloy-ref-*)  reference palette  (raw tonal values, never used directly in components)
@@ -19,35 +20,36 @@
 :root {
   /* ---- Layer 1: reference tonal palettes ------------------------------- */
 
-  /* Orange (primary) — brand hue is tone 50, #FF540D */
+  /* Pink / Magenta (primary) — brand hue is tone 50, #E80C7A. The lead accent:
+     buttons, links, active states, focus rings, the first stop of every gradient. */
   --alloy-ref-primary-0: #000000;
-  --alloy-ref-primary-10: #3a1000;
-  --alloy-ref-primary-20: #591b00;
-  --alloy-ref-primary-30: #883000;
-  --alloy-ref-primary-40: #b74107;
-  --alloy-ref-primary-50: #ff540d;
-  --alloy-ref-primary-60: #ff7538;
-  --alloy-ref-primary-70: #ff9767;
-  --alloy-ref-primary-80: #ffbc9c;
-  --alloy-ref-primary-90: #ffddcc;
-  --alloy-ref-primary-95: #ffeee4;
-  --alloy-ref-primary-99: #fff9f6;
+  --alloy-ref-primary-10: #3f001f;
+  --alloy-ref-primary-20: #630033;
+  --alloy-ref-primary-30: #92004d;
+  --alloy-ref-primary-40: #b80063;
+  --alloy-ref-primary-50: #e80c7a;
+  --alloy-ref-primary-60: #ff4d9e;
+  --alloy-ref-primary-70: #ff7ab8;
+  --alloy-ref-primary-80: #ffb0d3;
+  --alloy-ref-primary-90: #ffd9e9;
+  --alloy-ref-primary-95: #ffedf4;
+  --alloy-ref-primary-99: #fff7fb;
   --alloy-ref-primary-100: #ffffff;
 
-  /* Pink / Magenta (secondary) — brand hue is tone 50, #E80C7A.
+  /* Orange (secondary) — brand hue is tone 50, #FF540D.
      A full peer accent — it carries alternate CTAs, highlights, and the
      second stop of the brand gradients. Not "reserved". */
   --alloy-ref-secondary-0: #000000;
-  --alloy-ref-secondary-10: #3f001f;
-  --alloy-ref-secondary-20: #630033;
-  --alloy-ref-secondary-30: #92004d;
-  --alloy-ref-secondary-40: #b80063;
-  --alloy-ref-secondary-50: #e80c7a;
-  --alloy-ref-secondary-60: #ff4d9e;
-  --alloy-ref-secondary-70: #ff7ab8;
-  --alloy-ref-secondary-80: #ffb0d3;
-  --alloy-ref-secondary-90: #ffd9e9;
-  --alloy-ref-secondary-95: #ffedf4;
+  --alloy-ref-secondary-10: #3a1000;
+  --alloy-ref-secondary-20: #591b00;
+  --alloy-ref-secondary-30: #883000;
+  --alloy-ref-secondary-40: #b74107;
+  --alloy-ref-secondary-50: #ff540d;
+  --alloy-ref-secondary-60: #ff7538;
+  --alloy-ref-secondary-70: #ff9767;
+  --alloy-ref-secondary-80: #ffbc9c;
+  --alloy-ref-secondary-90: #ffddcc;
+  --alloy-ref-secondary-95: #ffeee4;
 
   /* Pure Red (error) — deliberately the one hot hue never used decoratively,
      so validation and destructive actions read as outside the palette. */
@@ -107,16 +109,16 @@
 
   /* ---- Layer 3: scales (mode independent) --------------------------- */
 
-  /* Brand gradients — orange ↔ pink. Use for depth on hero sections, brand
+  /* Brand gradients — pink ↔ orange. Use for depth on hero sections, brand
      marks, and (sparingly) high-emphasis surfaces. `-depth` is an ambient
      wash for large backgrounds. */
-  --alloy-gradient-warm: linear-gradient(135deg, #ff540d 0%, #e80c7a 100%);
-  --alloy-gradient-warm-reverse: linear-gradient(135deg, #e80c7a 0%, #ff540d 100%);
-  --alloy-gradient-warm-soft: linear-gradient(135deg, #ff7538 0%, #ff7ab8 100%);
-  --alloy-gradient-warm-vivid: linear-gradient(120deg, #ff540d 0%, #ff0d3d 45%, #e80c7a 100%);
+  --alloy-gradient-warm: linear-gradient(135deg, #e80c7a 0%, #ff540d 100%);
+  --alloy-gradient-warm-reverse: linear-gradient(135deg, #ff540d 0%, #e80c7a 100%);
+  --alloy-gradient-warm-soft: linear-gradient(135deg, #ff7ab8 0%, #ff7538 100%);
+  --alloy-gradient-warm-vivid: linear-gradient(120deg, #e80c7a 0%, #ff0d3d 45%, #ff540d 100%);
   --alloy-gradient-depth:
-    radial-gradient(130% 130% at 0% 0%, rgba(255, 84, 13, 0.16) 0%, transparent 58%),
-    radial-gradient(130% 130% at 100% 100%, rgba(232, 12, 122, 0.16) 0%, transparent 58%);
+    radial-gradient(130% 130% at 0% 0%, rgba(232, 12, 122, 0.16) 0%, transparent 58%),
+    radial-gradient(130% 130% at 100% 100%, rgba(255, 84, 13, 0.16) 0%, transparent 58%);
 
   /* Spacing — 4px grid */
   --alloy-space-0: 0;
@@ -230,8 +232,8 @@
 [data-alloy-theme="light"] {
   color-scheme: light;
 
-  /* primary-40 (#B74107) — white text passes WCAG AA (5.6:1). primary-50
-     (#FF540D, the brand orange) is 3.2:1 on white — large-text / chrome only. */
+  /* primary-40 (#B80063) — white text passes WCAG AA (6.5:1). primary-50
+     (#E80C7A, the brand pink) is ~4.4:1 on white — large-text / chrome only. */
   --alloy-sys-primary: var(--alloy-ref-primary-40);
   --alloy-sys-primary-bright: var(--alloy-ref-primary-50);
   --alloy-sys-on-primary: #ffffff;
@@ -241,7 +243,8 @@
   --alloy-sys-link: var(--alloy-ref-primary-40);
   --alloy-sys-link-visited: var(--alloy-ref-secondary-40);
 
-  /* secondary-40 (#B80063) — white text 6.6:1. secondary-50 is the brand pink. */
+  /* secondary-40 (#B74107) — white text 5.6:1, AA. secondary-50 (#FF540D) is
+     the brand orange — 3.2:1 on white, large-text / chrome only. */
   --alloy-sys-secondary: var(--alloy-ref-secondary-40);
   --alloy-sys-secondary-bright: var(--alloy-ref-secondary-50);
   --alloy-sys-on-secondary: #ffffff;
@@ -258,7 +261,7 @@
   --alloy-sys-warning: var(--alloy-ref-warning-40);
   --alloy-sys-on-warning: #ffffff;
 
-  /* Semantic gradient — orange → pink. `on-gradient` is always white. */
+  /* Semantic gradient — pink → orange. `on-gradient` is always white. */
   --alloy-sys-gradient: var(--alloy-gradient-warm);
   --alloy-sys-gradient-reverse: var(--alloy-gradient-warm-reverse);
   --alloy-sys-on-gradient: #ffffff;

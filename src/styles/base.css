@@ -45,7 +45,7 @@
   transition: opacity var(--alloy-duration-2) var(--alloy-ease-standard);
 }
 
-/* Brand gradient utilities — orange ↔ pink, for depth on hero / brand surfaces.
+/* Brand gradient utilities — pink ↔ orange, for depth on hero / brand surfaces.
    `--text` variants clip the gradient to the glyphs. */
 .alloy-gradient { background-image: var(--alloy-gradient-warm); color: var(--alloy-sys-on-gradient); }
 .alloy-gradient--reverse { background-image: var(--alloy-gradient-warm-reverse); }
