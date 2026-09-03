@@ -59,22 +59,33 @@
   color: transparent;
 }
 
-/* Typography utilities */
+/* Typography utilities — 28 roles, mirrors Figma `text/*` */
+.alloy-display-xl { font: var(--alloy-type-display-xl); letter-spacing: var(--alloy-tracking-tight); }
 .alloy-display-lg { font: var(--alloy-type-display-lg); letter-spacing: var(--alloy-tracking-tight); }
 .alloy-display-md { font: var(--alloy-type-display-md); letter-spacing: var(--alloy-tracking-tight); }
 .alloy-display-sm { font: var(--alloy-type-display-sm); letter-spacing: var(--alloy-tracking-tight); }
+.alloy-heading-xl { font: var(--alloy-type-heading-xl); }
+.alloy-heading-lg { font: var(--alloy-type-heading-lg); }
+.alloy-heading-md { font: var(--alloy-type-heading-md); }
+.alloy-heading-sm { font: var(--alloy-type-heading-sm); }
+.alloy-heading-xs { font: var(--alloy-type-heading-xs); }
 .alloy-headline-lg { font: var(--alloy-type-headline-lg); }
 .alloy-headline-md { font: var(--alloy-type-headline-md); }
 .alloy-headline-sm { font: var(--alloy-type-headline-sm); }
 .alloy-title-lg { font: var(--alloy-type-title-lg); }
 .alloy-title-md { font: var(--alloy-type-title-md); }
 .alloy-title-sm { font: var(--alloy-type-title-sm); letter-spacing: var(--alloy-tracking-wide); }
+.alloy-body-xl { font: var(--alloy-type-body-xl); }
 .alloy-body-lg { font: var(--alloy-type-body-lg); }
 .alloy-body-md { font: var(--alloy-type-body-md); }
 .alloy-body-sm { font: var(--alloy-type-body-sm); }
 .alloy-label-lg { font: var(--alloy-type-label-lg); letter-spacing: var(--alloy-tracking-wide); }
 .alloy-label-md { font: var(--alloy-type-label-md); letter-spacing: var(--alloy-tracking-wide); }
 .alloy-label-sm { font: var(--alloy-type-label-sm); letter-spacing: var(--alloy-tracking-wide); }
+.alloy-caption-lg { font: var(--alloy-type-caption-lg); }
+.alloy-caption-md { font: var(--alloy-type-caption-md); }
+.alloy-caption-sm { font: var(--alloy-type-caption-sm); }
+.alloy-overline { font: var(--alloy-type-overline); letter-spacing: 0.09em; text-transform: uppercase; }
 
 .alloy-text { margin: 0; color: var(--alloy-sys-on-surface); }
 .alloy-text--muted { color: var(--alloy-sys-on-surface-variant); }

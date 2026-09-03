@@ -56,9 +56,31 @@ export const gradient = {
   depth: cssVar("gradient-depth"),
 } as const;
 
+/** Numeric 4px-grid steps (`space[0]`…`space[12]`). */
 export const space = Object.fromEntries(
   Array.from({ length: 13 }, (_, i) => [i, cssVar(`space-${i}`)]),
 ) as Record<number, string>;
+
+/** T-shirt spacing aliases + component padding pairs (mirrors Figma `spacing/*`). */
+export const spacing = {
+  none: cssVar("space-none"),
+  "4xs": cssVar("space-4xs"),
+  "3xs": cssVar("space-3xs"),
+  "2xs": cssVar("space-2xs"),
+  xs: cssVar("space-xs"),
+  sm: cssVar("space-sm"),
+  md: cssVar("space-md"),
+  lg: cssVar("space-lg"),
+  xl: cssVar("space-xl"),
+  "2xl": cssVar("space-2xl"),
+  "3xl": cssVar("space-3xl"),
+  "4xl": cssVar("space-4xl"),
+  "5xl": cssVar("space-5xl"),
+  inputPaddingX: cssVar("space-input-padding-x"),
+  inputPaddingY: cssVar("space-input-padding-y"),
+  buttonPaddingX: cssVar("space-button-padding-x"),
+  buttonPaddingY: cssVar("space-button-padding-y"),
+} as const;
 
 export const radius = {
   none: cssVar("radius-none"),
@@ -97,21 +119,33 @@ export const grid = {
 } as const;
 
 export const typography = {
+  displayXl: cssVar("type-display-xl"),
   displayLg: cssVar("type-display-lg"),
   displayMd: cssVar("type-display-md"),
   displaySm: cssVar("type-display-sm"),
+  headingXl: cssVar("type-heading-xl"),
+  headingLg: cssVar("type-heading-lg"),
+  headingMd: cssVar("type-heading-md"),
+  headingSm: cssVar("type-heading-sm"),
+  headingXs: cssVar("type-heading-xs"),
+  /** @deprecated aliases of heading-* — kept for back-compat */
   headlineLg: cssVar("type-headline-lg"),
   headlineMd: cssVar("type-headline-md"),
   headlineSm: cssVar("type-headline-sm"),
   titleLg: cssVar("type-title-lg"),
   titleMd: cssVar("type-title-md"),
   titleSm: cssVar("type-title-sm"),
+  bodyXl: cssVar("type-body-xl"),
   bodyLg: cssVar("type-body-lg"),
   bodyMd: cssVar("type-body-md"),
   bodySm: cssVar("type-body-sm"),
   labelLg: cssVar("type-label-lg"),
   labelMd: cssVar("type-label-md"),
   labelSm: cssVar("type-label-sm"),
+  captionLg: cssVar("type-caption-lg"),
+  captionMd: cssVar("type-caption-md"),
+  captionSm: cssVar("type-caption-sm"),
+  overline: cssVar("type-overline"),
 } as const;
 
 export const motion = {
@@ -139,6 +173,7 @@ export const tokens = {
   color,
   gradient,
   space,
+  spacing,
   radius,
   elevation,
   aspect,

@@ -68,10 +68,10 @@ are inline SVG so components render even without the icon font loaded.
 | Depth         | Surface tint / elevation tint               | **Gradient tokens** — pink↔orange — do the brand depth; the container ramp and shadows stay pure neutral grey |
 | Shape         | Shape scale (none → full)                   | Generous: `sm` 6 · `md` 10 · `lg` 14 · `xl` 20. Buttons round to `lg`, chips are full pills |
 | Elevation     | 6 levels, shadow model                      | Clean neutral-grey shadows, 5 levels; cards default to level 1 |
-| Typography    | display / headline / title / body / label roles | One family (Inter); comfortable body leading (14/22, 16/26); bold display & headline |
+| Typography    | display / headline / title / body / label roles | One family (Inter). **28-role ramp** (Figma `text/*` parity): `display` xl·lg·md·sm · `heading` xl·lg·md·sm·xs · `title` lg·md·sm · `body` xl·lg·md·sm · `label` lg·md·sm · `caption` lg·md·sm · `overline`. Material-3 metrics; `headline-*` kept as aliases of `heading-*` |
 | Interaction   | State-layer overlays (hover .08 / focus .10 / press .10) | Kept — layer sits **behind** content (z-index 0) so hover/press tint never lowers contrast. Interactive cards get a perceptible 1.5px ring, not shadow alone |
 | Motion        | Standard / emphasized easing curves         | Brisk durations (80–340ms); springy `emphasized` easing |
-| Spacing       | —                                          | 4px grid (2 4 8 12 16 20 24 32 40 48 64 80) |
+| Spacing       | —                                          | 4px grid `--alloy-space-0…12` (0 2 4 8 12 16 20 24 32 40 48 64 80), with t-shirt aliases `--alloy-space-{none,4xs…5xl}` and component pairs `--alloy-space-{button,input}-padding-{x,y}` |
 
 ### Gradients
 
@@ -103,16 +103,32 @@ highest-emphasis button.
 
 ## Token architecture
 
-Three layers, all CSS custom properties (see `src/tokens/tokens.css`):
+Three layers, all CSS custom properties (see `src/tokens/tokens.css`), kept in
+parity with the Figma library's variable collections:
 
-1. **Reference** `--alloy-ref-*` — raw tonal palette values. Never consumed by
-   components directly.
-2. **System** `--alloy-sys-*` — semantic roles (`primary`, `on-surface`,
-   `surface-container-high`, `outline`…). This is what components read. Re-mapped
-   per theme.
-3. **Scales** `--alloy-space-*`, `--alloy-radius-*`, `--alloy-type-*`,
-   `--alloy-elevation-*`, `--alloy-ease-*`, `--alloy-duration-*` — mode
-   independent.
+1. **Reference** `--alloy-ref-*` — raw tonal palette values (Figma **Primitives**:
+   `primary/*`, `secondary/*`, `error/*` full 0–100 ramps, `neutral/*`,
+   `neutral-variant/*`, `success/*`, `warning/*`). Never consumed by components
+   directly.
+2. **System** `--alloy-sys-*` — semantic roles, re-mapped per theme. This is what
+   components read. The Figma **Semantic Tokens** collection (Light / Dark modes)
+   groups them into families:
+   - `color/*` — M3 roles: `primary`, `on-surface`, `surface-container-high`,
+     `outline`, `inverse-*`… plus `primary-bright` / `secondary-bright` for the
+     vivid brand hues.
+   - `text/*`, `icon/*`, `border/*` — foreground roles: `-primary`, `-secondary`,
+     `-tertiary`, `-disabled`, `-brand`, `-error/-success/-warning`, `-on-*`,
+     link states.
+   - `interactive/*`, `surface/*` — component-state roles: `-hover`, `-active`,
+     `-selected`, `-disabled`, `-focus-ring`, overlays, `surface-brand[-subtle]`.
+3. **Scales** — mode independent:
+   - `--alloy-space-0…12` (4px grid) + t-shirt aliases `--alloy-space-{none,
+     4xs,3xs,2xs,xs,sm,md,lg,xl,2xl,3xl,4xl,5xl}` + component pairs
+     `--alloy-space-{button,input}-padding-{x,y}`
+   - `--alloy-radius-*`, `--alloy-type-*` (28 roles), `--alloy-elevation-*`
+     (5 levels × light/dark, Figma `Elevation/*` effect styles),
+     `--alloy-gradient-*` (Figma `alloy/*` paint styles),
+     `--alloy-ease-*`, `--alloy-duration-*`, `--alloy-aspect-*`, `--alloy-grid-*`.
 
 ### Theming
 
@@ -146,9 +162,13 @@ Override the reference ramp or the system roles at `:root`:
 ### Tokens in JS
 
 ```ts
-import { color, space, radius, elevation } from "@alloy/react";
-// color.primary === "var(--alloy-sys-primary)"
-<div style={{ padding: space[5], borderRadius: radius.md }} />
+import { color, space, spacing, radius, typography, elevation } from "@alloy/react";
+// color.primary       === "var(--alloy-sys-primary)"
+// space[5]            === "var(--alloy-space-5)"     (numeric step)
+// spacing.md          === "var(--alloy-space-md)"    (t-shirt alias)
+// spacing.buttonPaddingX, spacing.inputPaddingY, …
+// typography.headingLg === "var(--alloy-type-heading-lg)"
+<div style={{ padding: spacing.md, borderRadius: radius.md, font: typography.bodyLg }} />
 ```
 
 ---
@@ -167,7 +187,7 @@ import { color, space, radius, elevation } from "@alloy/react";
 | `Chip`         | `variant` assist·filter·input·suggestion · `selected` · `startIcon` · `onRemove` |
 | `Card`         | `variant` elevated·filled·outlined · `interactive` · `padding` · `media` (full-bleed slot) · `mediaPosition` |
 | `Divider`      | `orientation` · `inset` |
-| `Text`         | `role` (15 type roles) · `as` · `color` default·muted·primary·error·inverse |
+| `Text`         | `role` (28 type roles — `display/heading/title/body/label` + `caption/overline`; `headline-*` still accepted) · `as` · `color` default·muted·primary·error·inverse |
 | `Link`         | `variant` inline·standalone·subtle·quiet · `external` (safe rel + ↗) · `startIcon` · `endIcon` |
 | `Breadcrumbs`  | `items` (`{label, href, icon}[]`) · `separator` · `maxItems` (collapse middle) |
 | `Table`        | `density` comfortable·compact · `striped` · `hoverable` · `stickyHeader` · `columnBorders`; cells take `data-align="end\|center"` |
@@ -207,6 +227,28 @@ gradient tokens' job now, not a tinted-shadow job.
 
 ---
 
+## Figma library
+
+The system is authored alongside a Figma file (**Alloy Design System**,
+`Kyl9uNZJ1mztAqasdVVHQn`). Code is the source of truth for behaviour; Figma is the
+source of truth for token values and visual structure. Pages:
+
+- **Cover · Getting Started**
+- **Foundations** — Color · Typography · Spacing & Shape · Elevation · Icons
+- **Components** — Button · Icon Button · Text Field · Checkbox · Radio · Switch ·
+  Chip · Card · Divider · Link · Breadcrumbs · Tabs
+  (each: a *Documentation* frame — properties, anatomy, when-to-use, do/don't,
+  a11y — and a *Component* frame with the variant matrix)
+- **Patterns** — Dialog · Popover · Data Table *(pages stubbed — component sheets
+  not yet drawn in Figma; the code components exist)*
+- **Template Examples** — composed page layouts *(planned: Home / Landing, About,
+  Case Study, Blog)*
+
+Button in Figma: `Variant` Filled·Tonal·Elevated·Outlined·Text·Danger ×
+`State` Default·Hover·Focus·Disabled, plus `Show Icon` (bool) and `Icon`
+(instance-swap). The code `Button` additionally ships `variant="gradient"` and
+`size` sm·md·lg.
+
 ## Scripts
 
 ```bash
@@ -228,6 +270,13 @@ demo/           the showcase app (not published)
 
 ## Roadmap
 
-Not yet built: `Menu`, `Select`, `Snackbar`, `Tooltip`, `Slider`, `Badge`,
-`Progress`, `AppBar`, `Accordion`, `List`. The token layer and interaction
-primitives are designed to carry them without change.
+**Components not yet built:** `Menu`, `Select`, `Snackbar`, `Tooltip`, `Slider`,
+`Badge`, `Progress`, `AppBar`, `Accordion`, `List`. The token layer and
+interaction primitives are designed to carry them without change.
+
+**Figma / library gaps:**
+
+- Draw the **Dialog**, **Popover** and **Data Table** component sheets in Figma
+  (code components already exist as `Dialog`, `Popover`, `Table`).
+- Build **Template Example** pages for content types: **Home / Landing**,
+  **About**, **Case Study**, **Blog** — composed from the component library.

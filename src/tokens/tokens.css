@@ -33,15 +33,15 @@
   --alloy-ref-primary-80: #ffb0d3;
   --alloy-ref-primary-90: #ffd9e9;
   --alloy-ref-primary-95: #ffedf4;
-  --alloy-ref-primary-99: #fff7fb;
+  --alloy-ref-primary-99: #fff8fb;
   --alloy-ref-primary-100: #ffffff;
 
   /* Orange (secondary) — brand hue is tone 50, #FF540D.
      A full peer accent — it carries alternate CTAs, highlights, and the
      second stop of the brand gradients. Not "reserved". */
   --alloy-ref-secondary-0: #000000;
-  --alloy-ref-secondary-10: #3a1000;
-  --alloy-ref-secondary-20: #591b00;
+  --alloy-ref-secondary-10: #3d1400;
+  --alloy-ref-secondary-20: #5c1f00;
   --alloy-ref-secondary-30: #883000;
   --alloy-ref-secondary-40: #b74107;
   --alloy-ref-secondary-50: #ff540d;
@@ -52,14 +52,21 @@
   --alloy-ref-secondary-95: #ffeee4;
 
   /* Pure Red (error) — deliberately the one hot hue never used decoratively,
-     so validation and destructive actions read as outside the palette. */
+     so validation and destructive actions read as outside the palette.
+     Full tonal ramp (Figma `error/*` parity). */
+  --alloy-ref-error-0: #000000;
   --alloy-ref-error-10: #410000;
   --alloy-ref-error-20: #6b0000;
   --alloy-ref-error-30: #9a0000;
   --alloy-ref-error-40: #cc0000;
   --alloy-ref-error-50: #ff0000;
+  --alloy-ref-error-60: #ff4d4d;
+  --alloy-ref-error-70: #ff8080;
   --alloy-ref-error-80: #ffb3b3;
   --alloy-ref-error-90: #ffdada;
+  --alloy-ref-error-95: #ffeded;
+  --alloy-ref-error-99: #fff8f8;
+  --alloy-ref-error-100: #ffffff;
 
   /* Neutral — true grey + white (barely-cool). Carries scannability. */
   --alloy-ref-neutral-0: #000000;
@@ -100,9 +107,11 @@
 
   /* Functional status — NOT brand accents. Kept clearly off-hue from the
      orange/pink/red brand so "success" and "warning" never read as decorative. */
+  --alloy-ref-success-10: #04210f;
   --alloy-ref-success-40: #1e7d4e;
   --alloy-ref-success-80: #8fd9b0;
   --alloy-ref-success-90: #baffd7;
+  --alloy-ref-warning-10: #3f2a00;
   --alloy-ref-warning-40: #6f5b00;
   --alloy-ref-warning-80: #e8c34a;
   --alloy-ref-warning-90: #ffe999;
@@ -135,6 +144,27 @@
   --alloy-space-11: 64px;
   --alloy-space-12: 80px;
 
+  /* Spacing — t-shirt aliases over the 4px grid (Figma `spacing/*` parity) */
+  --alloy-space-none: var(--alloy-space-0); /* 0  */
+  --alloy-space-4xs: var(--alloy-space-1);  /* 2  */
+  --alloy-space-3xs: var(--alloy-space-2);  /* 4  */
+  --alloy-space-2xs: var(--alloy-space-3);  /* 8  */
+  --alloy-space-xs: var(--alloy-space-4);   /* 12 */
+  --alloy-space-sm: var(--alloy-space-5);   /* 16 */
+  --alloy-space-md: var(--alloy-space-6);   /* 20 */
+  --alloy-space-lg: var(--alloy-space-7);   /* 24 */
+  --alloy-space-xl: var(--alloy-space-8);   /* 32 */
+  --alloy-space-2xl: var(--alloy-space-9);  /* 40 */
+  --alloy-space-3xl: var(--alloy-space-10); /* 48 */
+  --alloy-space-4xl: var(--alloy-space-11); /* 64 */
+  --alloy-space-5xl: var(--alloy-space-12); /* 80 */
+
+  /* Component spacing — semantic padding pairs */
+  --alloy-space-input-padding-x: var(--alloy-space-5);  /* 16 */
+  --alloy-space-input-padding-y: var(--alloy-space-3);  /* 8  */
+  --alloy-space-button-padding-x: var(--alloy-space-5); /* 16 */
+  --alloy-space-button-padding-y: var(--alloy-space-3); /* 8  */
+
   /* Shape — generous, friendly rounding */
   --alloy-radius-none: 0;
   --alloy-radius-xs: 3px;
@@ -145,7 +175,11 @@
   --alloy-radius-2xl: 28px;
   --alloy-radius-full: 999px;
 
-  /* Typography — one family, functional scale, comfortable leading for scanning. */
+  /* Typography — one family. Role scale mirrors the Figma `text/*` variables:
+     28 roles across display · heading · title · body · label · caption + overline,
+     with Material-3 metrics. Per-role letter-spacing lives in `--alloy-tracking-*`
+     and the `.alloy-*` utilities (CSS `font:` shorthand can't carry tracking).
+     `--alloy-type-headline-*` are retained as aliases of `heading-*` for back-compat. */
   --alloy-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
   --alloy-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
@@ -157,25 +191,38 @@
   --alloy-weight-bold: 700;
 
   /* role: display */
-  --alloy-type-display-lg: 700 46px/52px var(--alloy-font-sans);
-  --alloy-type-display-md: 700 37px/44px var(--alloy-font-sans);
-  --alloy-type-display-sm: 700 29px/36px var(--alloy-font-sans);
-  /* role: headline */
-  --alloy-type-headline-lg: 700 24px/32px var(--alloy-font-sans);
-  --alloy-type-headline-md: 600 20px/28px var(--alloy-font-sans);
+  --alloy-type-display-xl: 700 57px/64px var(--alloy-font-sans);
+  --alloy-type-display-lg: 700 45px/52px var(--alloy-font-sans);
+  --alloy-type-display-md: 700 36px/44px var(--alloy-font-sans);
+  --alloy-type-display-sm: 600 30px/36px var(--alloy-font-sans);
+  /* role: heading */
+  --alloy-type-heading-xl: 700 32px/40px var(--alloy-font-sans);
+  --alloy-type-heading-lg: 700 28px/36px var(--alloy-font-sans);
+  --alloy-type-heading-md: 600 24px/32px var(--alloy-font-sans);
+  --alloy-type-heading-sm: 600 22px/28px var(--alloy-font-sans);
+  --alloy-type-heading-xs: 600 20px/26px var(--alloy-font-sans);
+  /* role: headline — legacy aliases of heading-* */
+  --alloy-type-headline-lg: var(--alloy-type-heading-md);
+  --alloy-type-headline-md: var(--alloy-type-heading-xs);
   --alloy-type-headline-sm: 600 18px/26px var(--alloy-font-sans);
   /* role: title */
-  --alloy-type-title-lg: 600 16px/24px var(--alloy-font-sans);
-  --alloy-type-title-md: 600 14px/20px var(--alloy-font-sans);
-  --alloy-type-title-sm: 600 12px/16px var(--alloy-font-sans);
+  --alloy-type-title-lg: 500 22px/28px var(--alloy-font-sans);
+  --alloy-type-title-md: 500 16px/24px var(--alloy-font-sans);
+  --alloy-type-title-sm: 500 14px/20px var(--alloy-font-sans);
   /* role: body */
-  --alloy-type-body-lg: 400 16px/26px var(--alloy-font-sans);
-  --alloy-type-body-md: 400 14px/22px var(--alloy-font-sans);
-  --alloy-type-body-sm: 400 12px/18px var(--alloy-font-sans);
-  /* role: label (UI text — buttons, chips, captions) */
-  --alloy-type-label-lg: 600 14px/20px var(--alloy-font-sans);
-  --alloy-type-label-md: 600 12px/16px var(--alloy-font-sans);
-  --alloy-type-label-sm: 600 11px/16px var(--alloy-font-sans);
+  --alloy-type-body-xl: 400 18px/28px var(--alloy-font-sans);
+  --alloy-type-body-lg: 400 16px/24px var(--alloy-font-sans);
+  --alloy-type-body-md: 400 14px/20px var(--alloy-font-sans);
+  --alloy-type-body-sm: 400 12px/16px var(--alloy-font-sans);
+  /* role: label (UI text — buttons, chips, tabs) */
+  --alloy-type-label-lg: 500 14px/20px var(--alloy-font-sans);
+  --alloy-type-label-md: 500 12px/16px var(--alloy-font-sans);
+  --alloy-type-label-sm: 500 11px/16px var(--alloy-font-sans);
+  /* role: caption + overline */
+  --alloy-type-caption-lg: 400 12px/16px var(--alloy-font-sans);
+  --alloy-type-caption-md: 400 11px/14px var(--alloy-font-sans);
+  --alloy-type-caption-sm: 400 10px/14px var(--alloy-font-sans);
+  --alloy-type-overline: 500 11px/16px var(--alloy-font-sans);
 
   --alloy-tracking-tight: -0.015em;
   --alloy-tracking-normal: 0;

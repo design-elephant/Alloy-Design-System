@@ -2,18 +2,25 @@ import { createElement, forwardRef, type HTMLAttributes } from "react";
 import { cx } from "../utils/cx";
 
 export type TextRole =
-  | "display-lg" | "display-md" | "display-sm"
+  | "display-xl" | "display-lg" | "display-md" | "display-sm"
+  | "heading-xl" | "heading-lg" | "heading-md" | "heading-sm" | "heading-xs"
+  /** @deprecated aliases of heading-* */
   | "headline-lg" | "headline-md" | "headline-sm"
   | "title-lg" | "title-md" | "title-sm"
-  | "body-lg" | "body-md" | "body-sm"
-  | "label-lg" | "label-md" | "label-sm";
+  | "body-xl" | "body-lg" | "body-md" | "body-sm"
+  | "label-lg" | "label-md" | "label-sm"
+  | "caption-lg" | "caption-md" | "caption-sm"
+  | "overline";
 
 const defaultTag: Record<TextRole, string> = {
-  "display-lg": "h1", "display-md": "h1", "display-sm": "h2",
+  "display-xl": "h1", "display-lg": "h1", "display-md": "h1", "display-sm": "h2",
+  "heading-xl": "h2", "heading-lg": "h2", "heading-md": "h3", "heading-sm": "h4", "heading-xs": "h5",
   "headline-lg": "h2", "headline-md": "h3", "headline-sm": "h4",
   "title-lg": "h5", "title-md": "h6", "title-sm": "p",
-  "body-lg": "p", "body-md": "p", "body-sm": "p",
+  "body-xl": "p", "body-lg": "p", "body-md": "p", "body-sm": "p",
   "label-lg": "span", "label-md": "span", "label-sm": "span",
+  "caption-lg": "span", "caption-md": "span", "caption-sm": "span",
+  "overline": "span",
 };
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
